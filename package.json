@@ -1,0 +1,43 @@
+{
+  "name": "my-react-electron-app",
+  "productName": "my-react-electron-app",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "start": "npm run build:dev && electron-forge start",
+    "package": "npm run build && electron-forge package",
+    "make": "npm run build && electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": "Gramh",
+  "license": "MIT",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@electron-forge/cli": "^7.10.2",
+    "@electron-forge/maker-deb": "^7.10.2",
+    "@electron-forge/maker-rpm": "^7.10.2",
+    "@electron-forge/maker-squirrel": "^7.10.2",
+    "@electron-forge/maker-zip": "^7.10.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.10.2",
+    "@electron-forge/plugin-fuses": "^7.10.2",
+    "@electron/fuses": "^1.8.0",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "electron": "39.2.7",
+    "html-webpack-plugin": "^5.6.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
