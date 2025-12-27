@@ -57,6 +57,7 @@ body {
   left: 0;
   transform-origin: 0 0;
   will-change: transform;
+  transition: transform 0.1s ease-out;
 }
 
 .connection-lines {
@@ -67,12 +68,14 @@ body {
   height: 10000px;
   pointer-events: none;
   overflow: visible;
+  z-index: 1;
 }
 
 .nodes-layer {
   position: relative;
   width: 10000px;
   height: 10000px;
+  z-index: 2;
 }
 
 .node {
@@ -80,12 +83,13 @@ body {
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-  padding: 15px;
-  min-width: 200px;
-  max-width: 250px;
+  padding: 10px 5px 5px 5px;
+  width: 200px;
   cursor: pointer;
   transition: all 0.2s ease;
   border: 2px solid transparent;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .node:hover {
@@ -97,8 +101,11 @@ body {
 .main-node {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  min-width: 250px;
+  width: 200px;
+  max-height: 250px;
   border: 3px solid #ffd700;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-node:hover {
@@ -108,8 +115,12 @@ body {
 .child-node {
   background: white;
   color: #333;
+  height: 250px;
+  position: relative;
 }
-
+#ResetButton{
+  width: 60px;
+}
 .node.inactive {
   opacity: 0.5;
   background: #e0e0e0;
@@ -121,7 +132,11 @@ body {
 }
 
 .node-content {
-  margin-bottom: 10px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 5px;
+  min-height: 0;
 }
 
 .node-label {
@@ -145,11 +160,8 @@ body {
   font-size: 13px;
   line-height: 1.4;
   margin-bottom: 5px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .node-preview strong {
@@ -184,6 +196,55 @@ body {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.node-actions-bottom {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 5;
+}
+
+.btn-add-circle,
+.btn-toggle-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #4a90e2;
+  background: white;
+  color: #4a90e2;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-add-circle:hover,
+.btn-toggle-circle:hover {
+  background: #4a90e2;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-toggle-circle.inactive {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.btn-toggle-circle.inactive:hover {
+  background: #ff6b6b;
+  color: white;
 }
 
 .node-actions button {
@@ -223,14 +284,14 @@ body {
 
 .btn-delete {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 20px;
-  height: 20px;
+  top: -15px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: none;
-  background: #ff4757;
-  color: white;
+  border: 2px solid #ff4757;
+  background: white;
+  color: #ff4757;
   font-size: 16px;
   line-height: 1;
   cursor: pointer;
@@ -240,11 +301,14 @@ body {
   padding: 0;
   transition: all 0.2s ease;
   z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .btn-delete:hover {
-  background: #ff3838;
+  background: #ff4757;
+  color: white;
   transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .btn-toggle:hover {
@@ -323,8 +387,8 @@ body {
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
+  cursor: default !important;
 }
-
 .edit-modal h2 {
   margin-bottom: 25px;
   color: #333;
@@ -368,6 +432,55 @@ body {
   font-size: 14px;
 }
 
+.help-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.help-icon:hover {
+  opacity: 1;
+}
+
+.help-section {
+  background: #f0f7ff;
+  border-left: 4px solid #4a90e2;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  animation: slideDown 0.3s ease;
+}
+
+.help-section h4 {
+  margin: 0 0 8px 0;
+  color: #4a90e2;
+  font-size: 14px;
+}
+
+.help-section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.help-section li {
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 300px;
+  }
+}
+
 .form-group textarea {
   width: 100%;
   padding: 12px;
@@ -377,8 +490,9 @@ body {
   font-family: inherit;
   resize: vertical;
   transition: border-color 0.2s ease;
+  color: black;
+  caret-color: black;
 }
-
 .form-group textarea:focus {
   outline: none;
   border-color: #4a90e2;
@@ -420,7 +534,54 @@ body {
 .edit-modal::-webkit-scrollbar-thumb:hover {
   background: #a0a0a0;
 }
-`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\r\n  overflow: hidden;\r\n}\r\n\r\n.app {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n}\r\n\r\n.tree-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  overflow: hidden;\r\n  background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%);\r\n  cursor: grab;\r\n}\r\n\r\n.tree-container:active {\r\n  cursor: grabbing;\r\n}\r\n\r\n.tree-canvas {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  transform-origin: 0 0;\r\n  will-change: transform;\r\n}\r\n\r\n.connection-lines {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  pointer-events: none;\r\n  overflow: visible;\r\n}\r\n\r\n.nodes-layer {\r\n  position: relative;\r\n  width: 10000px;\r\n  height: 10000px;\r\n}\r\n\r\n.node {\r\n  position: absolute;\r\n  background: white;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  padding: 15px;\r\n  min-width: 200px;\r\n  max-width: 250px;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  border: 2px solid transparent;\r\n}\r\n\r\n.node:hover {\r\n  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transform: translate(-50%, -2px);\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.main-node {\r\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n  color: white;\r\n  min-width: 250px;\r\n  border: 3px solid #ffd700;\r\n}\r\n\r\n.main-node:hover {\r\n  border-color: #ffd700;\r\n}\r\n\r\n.child-node {\r\n  background: white;\r\n  color: #333;\r\n}\r\n\r\n.node.inactive {\r\n  opacity: 0.5;\r\n  background: #e0e0e0;\r\n  color: #999;\r\n}\r\n\r\n.node.inactive:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.node-content {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.node-label {\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n  text-transform: uppercase;\r\n  letter-spacing: 0.5px;\r\n  margin-bottom: 8px;\r\n  opacity: 0.8;\r\n}\r\n\r\n.main-node .node-label {\r\n  color: #ffd700;\r\n}\r\n\r\n.child-node .node-label {\r\n  color: #4a90e2;\r\n}\r\n\r\n.node-preview {\r\n  font-size: 13px;\r\n  line-height: 1.4;\r\n  margin-bottom: 5px;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 2;\r\n  -webkit-box-orient: vertical;\r\n}\r\n\r\n.node-preview strong {\r\n  font-weight: 600;\r\n  color: #4a90e2;\r\n}\r\n\r\n.main-node .node-preview {\r\n  color: white;\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n}\r\n\r\n.node-solution-preview {\r\n  font-size: 11px;\r\n  font-style: italic;\r\n  opacity: 0.9;\r\n  margin-top: 5px;\r\n  padding-top: 5px;\r\n  border-top: 1px solid rgba(0, 0, 0, 0.1);\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n\r\n.main-node .node-solution-preview {\r\n  border-top-color: rgba(255, 255, 255, 0.3);\r\n  color: #ffd700;\r\n}\r\n\r\n.node-actions {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.node-actions button {\r\n  flex: 1;\r\n  min-width: 80px;\r\n  padding: 6px 10px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 11px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.btn-add {\r\n  background: #4a90e2;\r\n  color: white;\r\n}\r\n\r\n.btn-add:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.main-node .btn-add {\r\n  background: #ffd700;\r\n  color: #333;\r\n}\r\n\r\n.main-node .btn-add:hover {\r\n  background: #ffed4e;\r\n}\r\n\r\n.btn-toggle {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.btn-delete {\r\n  position: absolute;\r\n  top: 5px;\r\n  right: 5px;\r\n  width: 20px;\r\n  height: 20px;\r\n  border-radius: 50%;\r\n  border: none;\r\n  background: #ff4757;\r\n  color: white;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  z-index: 10;\r\n}\r\n\r\n.btn-delete:hover {\r\n  background: #ff3838;\r\n  transform: scale(1.1);\r\n}\r\n\r\n.btn-toggle:hover {\r\n  background: #d0d0d0;\r\n}\r\n\r\n.btn-toggle.inactive {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-toggle.inactive:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.zoom-controls {\r\n  position: fixed;\r\n  bottom: 20px;\r\n  right: 20px;\r\n  display: flex;\r\n  gap: 10px;\r\n  align-items: center;\r\n  background: white;\r\n  padding: 10px 15px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  z-index: 1000;\r\n}\r\n\r\n.zoom-controls button {\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n}\r\n\r\n.zoom-controls button:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.zoom-controls span {\r\n  min-width: 50px;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  color: #333;\r\n}\r\n\r\n.edit-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  z-index: 2000;\r\n  backdrop-filter: blur(5px);\r\n}\r\n\r\n.edit-modal {\r\n  background: white;\r\n  border-radius: 12px;\r\n  padding: 30px;\r\n  max-width: 600px;\r\n  width: 90%;\r\n  max-height: 80vh;\r\n  overflow-y: auto;\r\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\r\n  position: relative;\r\n}\r\n\r\n.edit-modal h2 {\r\n  margin-bottom: 25px;\r\n  color: #333;\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n}\r\n\r\n.close-modal {\r\n  position: absolute;\r\n  top: 15px;\r\n  right: 15px;\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  background: #f0f0f0;\r\n  border-radius: 50%;\r\n  font-size: 24px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: #666;\r\n}\r\n\r\n.close-modal:hover {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.form-group {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.form-group label {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n  font-weight: 600;\r\n  color: #333;\r\n  font-size: 14px;\r\n}\r\n\r\n.form-group textarea {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-family: inherit;\r\n  resize: vertical;\r\n  transition: border-color 0.2s ease;\r\n}\r\n\r\n.form-group textarea:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-close-modal {\r\n  width: 100%;\r\n  padding: 12px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-close-modal:hover {\r\n  background: #357abd;\r\n}\r\n\r\n/* Scrollbar styling for modal */\r\n.edit-modal::-webkit-scrollbar {\r\n  width: 8px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-track {\r\n  background: #f0f0f0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb {\r\n  background: #c0c0c0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb:hover {\r\n  background: #a0a0a0;\r\n}\r\n"],"sourceRoot":""}]);
+
+/* Inline editable text styles */
+.inline-edit-paragraph {
+  line-height: 1.6;
+  font-size: 14px;
+  color: #333;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 2px solid #e0e0e0;
+  cursor: default;
+}
+
+.inline-edit-paragraph strong {
+  cursor: default;
+}
+
+
+.inline-input {
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 2px 6px;
+  background: white;
+  border-radius: 3px;
+  min-width: 20px;
+  display: inline;
+  outline: none;
+  transition: border-color 0.2s ease;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: black;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  caret-color: black;
+}
+
+.inline-input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.inline-input:empty::before {
+  content: "...";
+  color: #999;
+}`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\r\n  overflow: hidden;\r\n}\r\n\r\n.app {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n}\r\n\r\n.tree-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  overflow: hidden;\r\n  background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%);\r\n  cursor: grab;\r\n}\r\n\r\n.tree-container:active {\r\n  cursor: grabbing;\r\n}\r\n\r\n.tree-canvas {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  transform-origin: 0 0;\r\n  will-change: transform;\r\n  transition: transform 0.1s ease-out;\r\n}\r\n\r\n.connection-lines {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  pointer-events: none;\r\n  overflow: visible;\r\n  z-index: 1;\r\n}\r\n\r\n.nodes-layer {\r\n  position: relative;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  z-index: 2;\r\n}\r\n\r\n.node {\r\n  position: absolute;\r\n  background: white;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  padding: 10px 5px 5px 5px;\r\n  width: 200px;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  border: 2px solid transparent;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node:hover {\r\n  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transform: translate(-50%, -2px);\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.main-node {\r\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n  color: white;\r\n  width: 200px;\r\n  max-height: 250px;\r\n  border: 3px solid #ffd700;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.main-node:hover {\r\n  border-color: #ffd700;\r\n}\r\n\r\n.child-node {\r\n  background: white;\r\n  color: #333;\r\n  height: 250px;\r\n  position: relative;\r\n}\r\n#ResetButton{\r\n  width: 60px;\r\n}\r\n.node.inactive {\r\n  opacity: 0.5;\r\n  background: #e0e0e0;\r\n  color: #999;\r\n}\r\n\r\n.node.inactive:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.node-content {\r\n  flex: 1;\r\n  overflow-y: auto;\r\n  overflow-x: hidden;\r\n  padding-left: 5px;\r\n  min-height: 0;\r\n}\r\n\r\n.node-label {\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n  text-transform: uppercase;\r\n  letter-spacing: 0.5px;\r\n  margin-bottom: 8px;\r\n  opacity: 0.8;\r\n}\r\n\r\n.main-node .node-label {\r\n  color: #ffd700;\r\n}\r\n\r\n.child-node .node-label {\r\n  color: #4a90e2;\r\n}\r\n\r\n.node-preview {\r\n  font-size: 13px;\r\n  line-height: 1.4;\r\n  margin-bottom: 5px;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node-preview strong {\r\n  font-weight: 600;\r\n  color: #4a90e2;\r\n}\r\n\r\n.main-node .node-preview {\r\n  color: white;\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n}\r\n\r\n.node-solution-preview {\r\n  font-size: 11px;\r\n  font-style: italic;\r\n  opacity: 0.9;\r\n  margin-top: 5px;\r\n  padding-top: 5px;\r\n  border-top: 1px solid rgba(0, 0, 0, 0.1);\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n\r\n.main-node .node-solution-preview {\r\n  border-top-color: rgba(255, 255, 255, 0.3);\r\n  color: #ffd700;\r\n}\r\n\r\n.node-actions {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.node-actions-bottom {\r\n  position: absolute;\r\n  bottom: -15px;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n  display: flex;\r\n  gap: 15px;\r\n  z-index: 5;\r\n}\r\n\r\n.btn-add-circle,\r\n.btn-toggle-circle {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #4a90e2;\r\n  background: white;\r\n  color: #4a90e2;\r\n  font-size: 20px;\r\n  font-weight: bold;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-add-circle:hover,\r\n.btn-toggle-circle:hover {\r\n  background: #4a90e2;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle-circle.inactive {\r\n  border-color: #ff6b6b;\r\n  color: #ff6b6b;\r\n}\r\n\r\n.btn-toggle-circle.inactive:hover {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.node-actions button {\r\n  flex: 1;\r\n  min-width: 80px;\r\n  padding: 6px 10px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 11px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.btn-add {\r\n  background: #4a90e2;\r\n  color: white;\r\n}\r\n\r\n.btn-add:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.main-node .btn-add {\r\n  background: #ffd700;\r\n  color: #333;\r\n}\r\n\r\n.main-node .btn-add:hover {\r\n  background: #ffed4e;\r\n}\r\n\r\n.btn-toggle {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.btn-delete {\r\n  position: absolute;\r\n  top: -15px;\r\n  right: 20px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #ff4757;\r\n  background: white;\r\n  color: #ff4757;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  z-index: 10;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-delete:hover {\r\n  background: #ff4757;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle:hover {\r\n  background: #d0d0d0;\r\n}\r\n\r\n.btn-toggle.inactive {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-toggle.inactive:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.zoom-controls {\r\n  position: fixed;\r\n  bottom: 20px;\r\n  right: 20px;\r\n  display: flex;\r\n  gap: 10px;\r\n  align-items: center;\r\n  background: white;\r\n  padding: 10px 15px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  z-index: 1000;\r\n}\r\n\r\n.zoom-controls button {\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n}\r\n\r\n.zoom-controls button:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.zoom-controls span {\r\n  min-width: 50px;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  color: #333;\r\n}\r\n\r\n.edit-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  z-index: 2000;\r\n  backdrop-filter: blur(5px);\r\n}\r\n\r\n.edit-modal {\r\n  background: white;\r\n  border-radius: 12px;\r\n  padding: 30px;\r\n  max-width: 600px;\r\n  width: 90%;\r\n  max-height: 80vh;\r\n  overflow-y: auto;\r\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\r\n  position: relative;\r\n  cursor: default !important;\r\n}\r\n.edit-modal h2 {\r\n  margin-bottom: 25px;\r\n  color: #333;\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n}\r\n\r\n.close-modal {\r\n  position: absolute;\r\n  top: 15px;\r\n  right: 15px;\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  background: #f0f0f0;\r\n  border-radius: 50%;\r\n  font-size: 24px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: #666;\r\n}\r\n\r\n.close-modal:hover {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.form-group {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.form-group label {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n  font-weight: 600;\r\n  color: #333;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-icon {\r\n  margin-left: 8px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  opacity: 0.6;\r\n  transition: opacity 0.2s ease;\r\n}\r\n\r\n.help-icon:hover {\r\n  opacity: 1;\r\n}\r\n\r\n.help-section {\r\n  background: #f0f7ff;\r\n  border-left: 4px solid #4a90e2;\r\n  padding: 12px 16px;\r\n  margin-bottom: 12px;\r\n  border-radius: 4px;\r\n  animation: slideDown 0.3s ease;\r\n}\r\n\r\n.help-section h4 {\r\n  margin: 0 0 8px 0;\r\n  color: #4a90e2;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-section ul {\r\n  margin: 0;\r\n  padding-left: 20px;\r\n}\r\n\r\n.help-section li {\r\n  margin-bottom: 6px;\r\n  font-size: 13px;\r\n  color: #555;\r\n}\r\n\r\n@keyframes slideDown {\r\n  from {\r\n    opacity: 0;\r\n    max-height: 0;\r\n  }\r\n  to {\r\n    opacity: 1;\r\n    max-height: 300px;\r\n  }\r\n}\r\n\r\n.form-group textarea {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-family: inherit;\r\n  resize: vertical;\r\n  transition: border-color 0.2s ease;\r\n  color: black;\r\n  caret-color: black;\r\n}\r\n.form-group textarea:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-close-modal {\r\n  width: 100%;\r\n  padding: 12px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-close-modal:hover {\r\n  background: #357abd;\r\n}\r\n\r\n/* Scrollbar styling for modal */\r\n.edit-modal::-webkit-scrollbar {\r\n  width: 8px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-track {\r\n  background: #f0f0f0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb {\r\n  background: #c0c0c0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb:hover {\r\n  background: #a0a0a0;\r\n}\r\n\r\n/* Inline editable text styles */\r\n.inline-edit-paragraph {\r\n  line-height: 1.6;\r\n  font-size: 14px;\r\n  color: #333;\r\n  padding: 12px;\r\n  background: #f8f9fa;\r\n  border-radius: 6px;\r\n  border: 2px solid #e0e0e0;\r\n  cursor: default;\r\n}\r\n\r\n.inline-edit-paragraph strong {\r\n  cursor: default;\r\n}\r\n\r\n\r\n.inline-input {\r\n  border: 1px solid #ccc;\r\n  font-family: inherit;\r\n  font-size: inherit;\r\n  padding: 2px 6px;\r\n  background: white;\r\n  border-radius: 3px;\r\n  min-width: 20px;\r\n  display: inline;\r\n  outline: none;\r\n  transition: border-color 0.2s ease;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n  color: black;\r\n  user-select: text;\r\n  -webkit-user-select: text;\r\n  -moz-user-select: text;\r\n  -ms-user-select: text;\r\n  caret-color: black;\r\n}\r\n\r\n.inline-input:focus {\r\n  border-color: #4a90e2;\r\n  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);\r\n}\r\n\r\n.inline-input:empty::before {\r\n  content: \"...\";\r\n  color: #999;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31369,24 +31530,156 @@ const ChildQuestion = ({
   }, "\uD83D\uDDD1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "node-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "node-label"
-  }, "If-Then"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "node-preview"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "If:"), " ", node.If || 'Empty'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Previous Solution:"), " ", node.If || 'Double Click to edit'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "node-preview"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Then:"), " ", node.then || 'Empty'), node.Solution && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "node-solution-preview"
-  }, "Solution: ", node.Solution)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "node-actions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Negative Belief:"), " ", node.then || 'Double Click to edit'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "node-preview"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "Solution:"), " ", node.Solution || 'Double Click to edit')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "node-actions-bottom"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => onAddChild(node.ID),
-    className: "btn-add"
-  }, "+ Add Child"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => onToggleChildren(node.ID),
-    className: `btn-toggle ${isInactive ? 'inactive' : ''}`
-  }, isInactive ? 'Show' : 'Hide', " Children")));
+    onClick: e => {
+      e.stopPropagation();
+      onAddChild(node.ID);
+    },
+    className: "btn-add-circle",
+    title: "Add Child"
+  }, "+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: e => {
+      e.stopPropagation();
+      onToggleChildren(node.ID);
+    },
+    className: `btn-toggle-circle ${isInactive ? 'inactive' : ''}`,
+    title: isInactive ? "Unhide Children" : "Hide Children"
+  }, "-")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChildQuestion);
+
+/***/ },
+
+/***/ "./src/components/EditChildModal.jsx"
+/*!*******************************************!*\
+  !*** ./src/components/EditChildModal.jsx ***!
+  \*******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const EditChildModal = ({
+  editingNode,
+  closeEditModal,
+  updateNode
+}) => {
+  const [showHelp, setShowHelp] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  if (!editingNode) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit-modal-overlay",
+    onClick: closeEditModal
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit-modal",
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Edit Child Question"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "close-modal",
+    onClick: closeEditModal
+  }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "If", ' "', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "inline-input",
+    role: "textbox",
+    contentEditable: true,
+    suppressContentEditableWarning: true,
+    onBlur: e => updateNode(editingNode.ID, 'If', e.target.textContent),
+    onKeyDown: e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        e.target.blur();
+      }
+    }
+  }, editingNode.If || ''), '" ', "is true, the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, "worst thing"), " that would happen would be...")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    value: editingNode.then || '',
+    onChange: e => updateNode(editingNode.ID, 'then', e.target.value),
+    rows: "3"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Solution:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "help-icon",
+    onClick: () => setShowHelp(!showHelp),
+    title: "Click for help"
+  }, "\u2753")), showHelp && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "help-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Tips for Writing Solutions:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Is that Actually True?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "What is your heart telling you?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Sometimes the simplest 'Solution' is simply the opposite of the 'Negative Belief.'"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Remember there may be other beliefs keeping this one in place, so don't be afraid to write what you know to be true, even it's hard totally feel at the moment, the hesitancy is coming from the other unseen beliefs you will get to."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    value: editingNode.Solution || '',
+    onChange: e => updateNode(editingNode.ID, 'Solution', e.target.value),
+    rows: "3"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn-close-modal",
+    onClick: closeEditModal
+  }, "Done")));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditChildModal);
+
+/***/ },
+
+/***/ "./src/components/EditMainModal.jsx"
+/*!******************************************!*\
+  !*** ./src/components/EditMainModal.jsx ***!
+  \******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const EditMainModal = ({
+  editingNode,
+  closeEditModal,
+  updateNode
+}) => {
+  const [showHelp, setShowHelp] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  if (!editingNode) return null;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit-modal-overlay",
+    onClick: closeEditModal
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit-modal",
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "What Must I Believe is true to feel like this?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "close-modal",
+    onClick: closeEditModal
+  }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Negative Belief:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    value: editingNode.QuestionInput || '',
+    onChange: e => updateNode(editingNode.ID, 'QuestionInput', e.target.value),
+    rows: "4"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Solution:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "help-icon",
+    onClick: () => setShowHelp(!showHelp),
+    title: "Click for help"
+  }, "\u2753")), showHelp && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "help-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Tips for Writing Solutions:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Is that Actually True?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "What is your heart telling you?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Sometimes the simplest 'Solution' is simply the opposite of the 'Negative Belief.'"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Remember there may be other beliefs keeping this one in place, so don't be afraid to write what you know to be true, even it's hard totally feel at the moment, the hesitancy is coming from the other unseen beliefs you will get to.")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    value: editingNode.solution || '',
+    onChange: e => updateNode(editingNode.ID, 'solution', e.target.value),
+    rows: "4"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btn-close-modal",
+    onClick: closeEditModal
+  }, "Done")));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditMainModal);
 
 /***/ },
 
@@ -31425,11 +31718,13 @@ const MainQuestion = ({
     className: "node-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "node-label"
-  }, "Main Question"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Negative Belief"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "node-preview"
-  }, node.QuestionInput || 'Empty'), node.solution && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "node-solution-preview"
-  }, "Solution: ", node.solution)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, node.QuestionInput || 'Double Click to edit'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "node-label"
+  }, "Solution"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "node-preview"
+  }, node.solution || 'Double Click to edit')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "node-actions"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => onAddChild(node.ID),
@@ -31454,6 +31749,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MainQuestion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MainQuestion */ "./src/components/MainQuestion.jsx");
 /* harmony import */ var _ChildQuestion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChildQuestion */ "./src/components/ChildQuestion.jsx");
+/* harmony import */ var _EditMainModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditMainModal */ "./src/components/EditMainModal.jsx");
+/* harmony import */ var _EditChildModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditChildModal */ "./src/components/EditChildModal.jsx");
+
+
 
 
 
@@ -31503,7 +31802,7 @@ const TreeView = ({
 
     // Second pass: calculate positions layer by layer
     const horizontalSpacing = 230; // Space between siblings
-    const verticalSpacing = 250; // Space between layers
+    const verticalSpacing = 350; // Space between layers
 
     Object.keys(layers).forEach(depth => {
       const layerNodes = layers[depth];
@@ -31601,7 +31900,7 @@ const TreeView = ({
     if (!container) return;
     const handleWheel = e => {
       e.preventDefault();
-      const delta = e.deltaY * -0.001;
+      const delta = e.deltaY * -0.002;
       const newZoom = Math.min(Math.max(0.1, zoom + delta), 3);
       setZoom(newZoom);
     };
@@ -31613,7 +31912,7 @@ const TreeView = ({
     };
   }, [zoom]);
   const handleMouseDown = e => {
-    if (e.button === 0 && !e.target.closest('.node')) {
+    if (e.button === 0 && !e.target.closest('.node') && !editingNode) {
       setIsDragging(true);
       setDragStart({
         x: e.clientX - pan.x,
@@ -31622,7 +31921,7 @@ const TreeView = ({
     }
   };
   const handleMouseMove = e => {
-    if (isDragging) {
+    if (isDragging && !editingNode) {
       setPan({
         x: e.clientX - dragStart.x,
         y: e.clientY - dragStart.y
@@ -31633,9 +31932,21 @@ const TreeView = ({
     setIsDragging(false);
   };
   const addChild = parentId => {
+    // Find parent node to get its Solution
+    let parentNode = null;
+    const findParent = node => {
+      if (node.ID === parentId) {
+        parentNode = node;
+        return;
+      }
+      if (node.children && node.children.length > 0) {
+        node.children.forEach(child => findParent(child));
+      }
+    };
+    findParent(projectData.ProjectStructure.MainQuestion);
     const newChild = {
       ID: `child-${Date.now()}`,
-      If: '',
+      If: parentNode?.Solution || parentNode?.solution || '',
       then: '',
       Solution: '',
       parentId: parentId,
@@ -31734,6 +32045,14 @@ const TreeView = ({
         MainQuestion: updatedMainQuestion
       }
     });
+
+    // Update editingNode state so controlled inputs reflect changes
+    if (editingNode && editingNode.ID === nodeId) {
+      setEditingNode({
+        ...editingNode,
+        [field]: value
+      });
+    }
   };
   const handleNodeClick = node => {
     setSelectedNode(node.ID);
@@ -31798,7 +32117,10 @@ const TreeView = ({
             const spacing = Math.min(nodeWidth / (numChildren + 1), 40);
             const startOffset = -(numChildren - 1) * spacing / 2;
             const parentStartX = parentPos.x + startOffset + index * spacing;
-            const parentBottom = parentPos.y + 80;
+
+            // Calculate parent bottom based on node type (main nodes are auto-height, children are 250px)
+            const parentNodeHeight = node.ID === projectData?.ProjectStructure?.MainQuestion?.ID ? 85 : 195;
+            const parentBottom = parentPos.y + parentNodeHeight;
             const childTop = childPos.y;
             const idealMidY = parentBottom + (childTop - parentBottom) / 2;
             lineSegments.push({
@@ -32024,55 +32346,22 @@ const TreeView = ({
     className: "connection-lines"
   }, renderLines()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "nodes-layer"
-  }, renderNodes())), editingNode && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "edit-modal-overlay",
-    onClick: closeEditModal
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "edit-modal",
-    onClick: e => e.stopPropagation()
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, editingNode.ID.startsWith('main') ? 'Edit Main Question' : 'Edit Child Question'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "close-modal",
-    onClick: closeEditModal
-  }, "\xD7"), editingNode.ID.startsWith('main') ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Question:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-    value: editingNode.QuestionInput || '',
-    onChange: e => updateNode(editingNode.ID, 'QuestionInput', e.target.value),
-    rows: "4"
+  }, renderNodes())), editingNode && (editingNode.ID.startsWith('main') ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EditMainModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    editingNode: editingNode,
+    closeEditModal: closeEditModal,
+    updateNode: updateNode
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EditChildModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    editingNode: editingNode,
+    closeEditModal: closeEditModal,
+    updateNode: updateNode
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Solution:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-    value: editingNode.solution || '',
-    onChange: e => updateNode(editingNode.ID, 'solution', e.target.value),
-    rows: "4"
-  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "If:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-    value: editingNode.If || '',
-    onChange: e => updateNode(editingNode.ID, 'If', e.target.value),
-    rows: "3"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Then:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-    value: editingNode.then || '',
-    onChange: e => updateNode(editingNode.ID, 'then', e.target.value),
-    rows: "3"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, "Solution:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-    value: editingNode.Solution || '',
-    onChange: e => updateNode(editingNode.ID, 'Solution', e.target.value),
-    rows: "3"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "btn-close-modal",
-    onClick: closeEditModal
-  }, "Done"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "zoom-controls"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => setZoom(Math.min(zoom + 0.1, 3))
+    onClick: () => setZoom(Math.min(zoom + 0.2, 3))
   }, "+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, Math.round(zoom * 100), "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => setZoom(Math.max(zoom - 0.1, 0.1))
+    onClick: () => setZoom(Math.max(zoom - 0.2, 0.1))
   }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    id: "ResetButton",
     onClick: () => {
       setZoom(1);
       setPan({
@@ -32080,9 +32369,7 @@ const TreeView = ({
         y: 100
       });
     }
-  }, "Reset"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: () => console.log('Line Segments:', window.debugLineSegments)
-  }, "Debug Lines")));
+  }, "Reset")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TreeView);
 

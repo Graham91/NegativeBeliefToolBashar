@@ -34,6 +34,7 @@ body {
   left: 0;
   transform-origin: 0 0;
   will-change: transform;
+  transition: transform 0.1s ease-out;
 }
 
 .connection-lines {
@@ -44,12 +45,14 @@ body {
   height: 10000px;
   pointer-events: none;
   overflow: visible;
+  z-index: 1;
 }
 
 .nodes-layer {
   position: relative;
   width: 10000px;
   height: 10000px;
+  z-index: 2;
 }
 
 .node {
@@ -57,12 +60,13 @@ body {
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-  padding: 15px;
-  min-width: 200px;
-  max-width: 250px;
+  padding: 10px 5px 5px 5px;
+  width: 200px;
   cursor: pointer;
   transition: all 0.2s ease;
   border: 2px solid transparent;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .node:hover {
@@ -74,8 +78,11 @@ body {
 .main-node {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  min-width: 250px;
+  width: 200px;
+  max-height: 250px;
   border: 3px solid #ffd700;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-node:hover {
@@ -85,8 +92,12 @@ body {
 .child-node {
   background: white;
   color: #333;
+  height: 250px;
+  position: relative;
 }
-
+#ResetButton{
+  width: 60px;
+}
 .node.inactive {
   opacity: 0.5;
   background: #e0e0e0;
@@ -98,7 +109,11 @@ body {
 }
 
 .node-content {
-  margin-bottom: 10px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 5px;
+  min-height: 0;
 }
 
 .node-label {
@@ -122,11 +137,8 @@ body {
   font-size: 13px;
   line-height: 1.4;
   margin-bottom: 5px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .node-preview strong {
@@ -161,6 +173,55 @@ body {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.node-actions-bottom {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 5;
+}
+
+.btn-add-circle,
+.btn-toggle-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #4a90e2;
+  background: white;
+  color: #4a90e2;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-add-circle:hover,
+.btn-toggle-circle:hover {
+  background: #4a90e2;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-toggle-circle.inactive {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.btn-toggle-circle.inactive:hover {
+  background: #ff6b6b;
+  color: white;
 }
 
 .node-actions button {
@@ -200,14 +261,14 @@ body {
 
 .btn-delete {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 20px;
-  height: 20px;
+  top: -15px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: none;
-  background: #ff4757;
-  color: white;
+  border: 2px solid #ff4757;
+  background: white;
+  color: #ff4757;
   font-size: 16px;
   line-height: 1;
   cursor: pointer;
@@ -217,11 +278,14 @@ body {
   padding: 0;
   transition: all 0.2s ease;
   z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .btn-delete:hover {
-  background: #ff3838;
+  background: #ff4757;
+  color: white;
   transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .btn-toggle:hover {
@@ -300,8 +364,8 @@ body {
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
+  cursor: default !important;
 }
-
 .edit-modal h2 {
   margin-bottom: 25px;
   color: #333;
@@ -345,6 +409,55 @@ body {
   font-size: 14px;
 }
 
+.help-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.help-icon:hover {
+  opacity: 1;
+}
+
+.help-section {
+  background: #f0f7ff;
+  border-left: 4px solid #4a90e2;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  animation: slideDown 0.3s ease;
+}
+
+.help-section h4 {
+  margin: 0 0 8px 0;
+  color: #4a90e2;
+  font-size: 14px;
+}
+
+.help-section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.help-section li {
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 300px;
+  }
+}
+
 .form-group textarea {
   width: 100%;
   padding: 12px;
@@ -354,8 +467,9 @@ body {
   font-family: inherit;
   resize: vertical;
   transition: border-color 0.2s ease;
+  color: black;
+  caret-color: black;
 }
-
 .form-group textarea:focus {
   outline: none;
   border-color: #4a90e2;
@@ -396,4 +510,52 @@ body {
 
 .edit-modal::-webkit-scrollbar-thumb:hover {
   background: #a0a0a0;
+}
+
+/* Inline editable text styles */
+.inline-edit-paragraph {
+  line-height: 1.6;
+  font-size: 14px;
+  color: #333;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 2px solid #e0e0e0;
+  cursor: default;
+}
+
+.inline-edit-paragraph strong {
+  cursor: default;
+}
+
+
+.inline-input {
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 2px 6px;
+  background: white;
+  border-radius: 3px;
+  min-width: 20px;
+  display: inline;
+  outline: none;
+  transition: border-color 0.2s ease;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: black;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  caret-color: black;
+}
+
+.inline-input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.inline-input:empty::before {
+  content: "...";
+  color: #999;
 }

@@ -16,9 +16,10 @@ const MainQuestion = ({ node, position, onAddChild, onDoubleClick, onClick }) =>
       onDoubleClick={() => onDoubleClick(node)}
     >
       <div className="node-content">
-        <div className="node-label">Main Question</div>
-        <div className="node-preview">{node.QuestionInput || 'Empty'}</div>
-        {node.solution && <div className="node-solution-preview">Solution: {node.solution}</div>}
+        <div className="node-label">Negative Belief</div>
+        <div className="node-preview">{node.QuestionInput || 'Double Click to edit'}</div>
+        <div className="node-label">Solution</div>
+        <div className="node-preview">{node.solution || 'Double Click to edit'}</div>
       </div>
       <div className="node-actions">
         <button onClick={() => onAddChild(node.ID)} className="btn-add">

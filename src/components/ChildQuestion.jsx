@@ -17,8 +17,8 @@ const ChildQuestion = ({ node, position, onAddChild, onToggleChildren, onDoubleC
       onClick={() => onClick(node)}
       onDoubleClick={() => onDoubleClick(node)}
     >
-      <button 
-        className="btn-delete" 
+      <button
+        className="btn-delete"
         onClick={(e) => {
           e.stopPropagation();
           onDelete(node.ID);
@@ -28,24 +28,42 @@ const ChildQuestion = ({ node, position, onAddChild, onToggleChildren, onDoubleC
         🗑
       </button>
       <div className="node-content">
-        <div className="node-label">If-Then</div>
+        {/* <div className="node-preview">
+         If {node.If || '...'} is true the worst thing that would happen would be...
+        </div> */}
         <div className="node-preview">
-          <strong>If:</strong> {node.If || 'Empty'}
+          <strong>Previous Solution:</strong> {node.If || 'Double Click to edit'}
         </div>
+        <hr />
         <div className="node-preview">
-          <strong>Then:</strong> {node.then || 'Empty'}
+          <strong>Negative Belief:</strong> {node.then || 'Double Click to edit'}
         </div>
-        {node.Solution && <div className="node-solution-preview">Solution: {node.Solution}</div>}
+        <hr />
+        <div className="node-preview">
+          <strong>Solution:</strong> {node.Solution || 'Double Click to edit'}
+        </div>
+        {/* {node.Solution && <div className="node-solution-preview">Solution: {node.Solution}</div>} */}
       </div>
-      <div className="node-actions">
-        <button onClick={() => onAddChild(node.ID)} className="btn-add">
-          + Add Child
-        </button>
-        <button 
-          onClick={() => onToggleChildren(node.ID)} 
-          className={`btn-toggle ${isInactive ? 'inactive' : ''}`}
+      <div className="node-actions-bottom">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onAddChild(node.ID);
+          }}
+          className="btn-add-circle"
+          title="Add Child"
         >
-          {isInactive ? 'Show' : 'Hide'} Children
+          +
+        </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleChildren(node.ID);
+          }}
+          className={`btn-toggle-circle ${isInactive ? 'inactive' : ''}`}
+          title={isInactive ? "Unhide Children" : "Hide Children"}
+        >
+          -
         </button>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import MainQuestion from './MainQuestion';
 import ChildQuestion from './ChildQuestion';
+import EditMainModal from './EditMainModal';
+import EditChildModal from './EditChildModal';
 
 const TreeView = ({ projectData, updateProjectData }) => {
   const [zoom, setZoom] = useState(1);
@@ -42,7 +44,7 @@ const TreeView = ({ projectData, updateProjectData }) => {
     
     // Second pass: calculate positions layer by layer
     const horizontalSpacing = 230; // Space between siblings
-    const verticalSpacing = 250; // Space between layers
+    const verticalSpacing = 350; // Space between layers
     
     Object.keys(layers).forEach(depth => {
       const layerNodes = layers[depth];
@@ -145,7 +147,7 @@ const TreeView = ({ projectData, updateProjectData }) => {
 
     const handleWheel = (e) => {
       e.preventDefault();
-      const delta = e.deltaY * -0.001;
+      const delta = e.deltaY * -0.002;
       const newZoom = Math.min(Math.max(0.1, zoom + delta), 3);
       setZoom(newZoom);
     };
@@ -158,14 +160,14 @@ const TreeView = ({ projectData, updateProjectData }) => {
   }, [zoom]);
 
   const handleMouseDown = (e) => {
-    if (e.button === 0 && !e.target.closest('.node')) {
+    if (e.button === 0 && !e.target.closest('.node') && !editingNode) {
       setIsDragging(true);
       setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
     }
   };
 
   const handleMouseMove = (e) => {
-    if (isDragging) {
+    if (isDragging && !editingNode) {
       setPan({
         x: e.clientX - dragStart.x,
         y: e.clientY - dragStart.y
@@ -178,9 +180,22 @@ const TreeView = ({ projectData, updateProjectData }) => {
   };
 
   const addChild = (parentId) => {
+    // Find parent node to get its Solution
+    let parentNode = null;
+    const findParent = (node) => {
+      if (node.ID === parentId) {
+        parentNode = node;
+        return;
+      }
+      if (node.children && node.children.length > 0) {
+        node.children.forEach(child => findParent(child));
+      }
+    };
+    findParent(projectData.ProjectStructure.MainQuestion);
+
     const newChild = {
       ID: `child-${Date.now()}`,
-      If: '',
+      If: parentNode?.Solution || parentNode?.solution || '',
       then: '',
       Solution: '',
       parentId: parentId,
@@ -287,6 +302,14 @@ const TreeView = ({ projectData, updateProjectData }) => {
         MainQuestion: updatedMainQuestion
       }
     });
+
+    // Update editingNode state so controlled inputs reflect changes
+    if (editingNode && editingNode.ID === nodeId) {
+      setEditingNode({
+        ...editingNode,
+        [field]: value
+      });
+    }
   };
 
   const handleNodeClick = (node) => {
@@ -362,7 +385,9 @@ const TreeView = ({ projectData, updateProjectData }) => {
             const startOffset = -(numChildren - 1) * spacing / 2;
             const parentStartX = parentPos.x + startOffset + (index * spacing);
             
-            const parentBottom = parentPos.y + 80;
+            // Calculate parent bottom based on node type (main nodes are auto-height, children are 250px)
+            const parentNodeHeight = node.ID === projectData?.ProjectStructure?.MainQuestion?.ID ? 85 : 195;
+            const parentBottom = parentPos.y + parentNodeHeight;
             const childTop = childPos.y;
             const idealMidY = parentBottom + (childTop - parentBottom) / 2;
             
@@ -629,72 +654,27 @@ const TreeView = ({ projectData, updateProjectData }) => {
       </div>
 
       {editingNode && (
-        <div className="edit-modal-overlay" onClick={closeEditModal}>
-          <div className="edit-modal" onClick={(e) => e.stopPropagation()}>
-            <h2>{editingNode.ID.startsWith('main') ? 'Edit Main Question' : 'Edit Child Question'}</h2>
-            <button className="close-modal" onClick={closeEditModal}>×</button>
-            
-            {editingNode.ID.startsWith('main') ? (
-              <>
-                <div className="form-group">
-                  <label>Question:</label>
-                  <textarea
-                    value={editingNode.QuestionInput || ''}
-                    onChange={(e) => updateNode(editingNode.ID, 'QuestionInput', e.target.value)}
-                    rows="4"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Solution:</label>
-                  <textarea
-                    value={editingNode.solution || ''}
-                    onChange={(e) => updateNode(editingNode.ID, 'solution', e.target.value)}
-                    rows="4"
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="form-group">
-                  <label>If:</label>
-                  <textarea
-                    value={editingNode.If || ''}
-                    onChange={(e) => updateNode(editingNode.ID, 'If', e.target.value)}
-                    rows="3"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Then:</label>
-                  <textarea
-                    value={editingNode.then || ''}
-                    onChange={(e) => updateNode(editingNode.ID, 'then', e.target.value)}
-                    rows="3"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Solution:</label>
-                  <textarea
-                    value={editingNode.Solution || ''}
-                    onChange={(e) => updateNode(editingNode.ID, 'Solution', e.target.value)}
-                    rows="3"
-                  />
-                </div>
-              </>
-            )}
-            
-            <button className="btn-close-modal" onClick={closeEditModal}>
-              Done
-            </button>
-          </div>
-        </div>
+        editingNode.ID.startsWith('main') ? (
+          <EditMainModal 
+            editingNode={editingNode}
+            closeEditModal={closeEditModal}
+            updateNode={updateNode}
+          />
+        ) : (
+          <EditChildModal 
+            editingNode={editingNode}
+            closeEditModal={closeEditModal}
+            updateNode={updateNode}
+          />
+        )
       )}
 
       <div className="zoom-controls">
-        <button onClick={() => setZoom(Math.min(zoom + 0.1, 3))}>+</button>
+        <button onClick={() => setZoom(Math.min(zoom + 0.2, 3))}>+</button>
         <span>{Math.round(zoom * 100)}%</span>
-        <button onClick={() => setZoom(Math.max(zoom - 0.1, 0.1))}>-</button>
-        <button onClick={() => { setZoom(1); setPan({ x: 600, y: 100 }); }}>Reset</button>
-        <button onClick={() => console.log('Line Segments:', window.debugLineSegments)}>Debug Lines</button>
+        <button onClick={() => setZoom(Math.max(zoom - 0.2, 0.1))}>-</button>
+        <button id="ResetButton" onClick={() => { setZoom(1); setPan({ x: 600, y: 100 }); }}>Reset</button>
+        {/* <button onClick={() => console.log('Line Segments:', window.debugLineSegments)}>Debug Lines</button> */}
       </div>
     </div>
   );
