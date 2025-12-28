@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import TreeView from './components/TreeView';
+import ProjectManager from './components/ProjectManager';
 import './App.css';
 
 const App = () => {
+  const [currentView, setCurrentView] = useState('projects'); // 'projects' or 'tree'
+  const [currentProjectId, setCurrentProjectId] = useState(null);
   const [projectData, setProjectData] = useState({
     projectName: 'New Project',
     LastSaveTime: null,
@@ -29,9 +32,18 @@ const App = () => {
       setProjectData(data);
     };
 
+    // Listen for project loaded
+    const handleProjectLoaded = (event, data) => {
+      setProjectData(data.projectData);
+      setCurrentProjectId(data.projectId);
+      setCurrentView('tree');
+    };
+
     // Listen for save requests
     const handleRequestSaveData = () => {
-      window.electronAPI.saveData(projectDataRef.current);
+      if (currentProjectId) {
+        window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+      }
     };
 
     // Listen for file saved confirmation
@@ -42,26 +54,66 @@ const App = () => {
     };
 
     window.electronAPI.onFileOpened(handleFileOpened);
+    window.electronAPI.onProjectLoaded(handleProjectLoaded);
     window.electronAPI.onRequestSaveData(handleRequestSaveData);
     window.electronAPI.onFileSaved(handleFileSaved);
 
     return () => {
       window.electronAPI.removeListener('file-opened', handleFileOpened);
+      window.electronAPI.removeListener('project-loaded', handleProjectLoaded);
       window.electronAPI.removeListener('request-save-data', handleRequestSaveData);
       window.electronAPI.removeListener('file-saved', handleFileSaved);
     };
+  }, [currentProjectId]);
+
+  // Auto-save every 60 seconds when in tree view
+  useEffect(() => {
+    if (currentView === 'tree' && currentProjectId) {
+      const autoSaveInterval = setInterval(() => {
+        window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+        console.log('Auto-saved project');
+      }, 60000); // 60 seconds
+
+      return () => clearInterval(autoSaveInterval);
+    }
+  }, [currentView, currentProjectId]);
+
+  const updateProjectData = useCallback((newData) => {
+    setProjectData(newData);
   }, []);
 
-  const updateProjectData = (newData) => {
-    setProjectData(newData);
-  };
+  const handleSelectProject = useCallback((projectId) => {
+    window.electronAPI.loadProject(projectId);
+  }, []);
+
+  const handleSaveProject = useCallback(() => {
+    if (currentProjectId) {
+      window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+      console.log('Project saved manually');
+    }
+  }, [currentProjectId]);
+
+  const handleBackToProjects = useCallback(() => {
+    // Auto-save current project before going back
+    if (currentProjectId) {
+      window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+    }
+    setCurrentView('projects');
+    setCurrentProjectId(null);
+  }, [currentProjectId]);
 
   return (
     <div className="app">
-      <TreeView 
-        projectData={projectData} 
-        updateProjectData={updateProjectData}
-      />
+      {currentView === 'projects' ? (
+        <ProjectManager onSelectProject={handleSelectProject} />
+      ) : (
+        <TreeView 
+          projectData={projectData} 
+          updateProjectData={updateProjectData}
+          onBackToProjects={handleBackToProjects}
+          onSaveProject={handleSaveProject}
+        />
+      )}
     </div>
   );
 };

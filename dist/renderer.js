@@ -581,7 +581,271 @@ body {
 .inline-input:empty::before {
   content: "...";
   color: #999;
-}`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA;EACE,uGAAuG;EACvG,gBAAgB;AAClB;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,gBAAgB;EAChB,gEAAgE;EAChE,YAAY;AACd;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,kBAAkB;EAClB,MAAM;EACN,OAAO;EACP,qBAAqB;EACrB,sBAAsB;EACtB,mCAAmC;AACrC;;AAEA;EACE,kBAAkB;EAClB,MAAM;EACN,OAAO;EACP,cAAc;EACd,eAAe;EACf,oBAAoB;EACpB,iBAAiB;EACjB,UAAU;AACZ;;AAEA;EACE,kBAAkB;EAClB,cAAc;EACd,eAAe;EACf,UAAU;AACZ;;AAEA;EACE,kBAAkB;EAClB,iBAAiB;EACjB,kBAAkB;EAClB,uEAAuE;EACvE,yBAAyB;EACzB,YAAY;EACZ,eAAe;EACf,yBAAyB;EACzB,6BAA6B;EAC7B,qBAAqB;EACrB,yBAAyB;AAC3B;;AAEA;EACE,wEAAwE;EACxE,gCAAgC;EAChC,qBAAqB;AACvB;;AAEA;EACE,6DAA6D;EAC7D,YAAY;EACZ,YAAY;EACZ,iBAAiB;EACjB,yBAAyB;EACzB,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,iBAAiB;EACjB,WAAW;EACX,aAAa;EACb,kBAAkB;AACpB;AACA;EACE,WAAW;AACb;AACA;EACE,YAAY;EACZ,mBAAmB;EACnB,WAAW;AACb;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,OAAO;EACP,gBAAgB;EAChB,kBAAkB;EAClB,iBAAiB;EACjB,aAAa;AACf;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,yBAAyB;EACzB,qBAAqB;EACrB,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,qBAAqB;EACrB,yBAAyB;AAC3B;;AAEA;EACE,gBAAgB;EAChB,cAAc;AAChB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,eAAe;EACf,kBAAkB;EAClB,YAAY;EACZ,eAAe;EACf,gBAAgB;EAChB,wCAAwC;EACxC,gBAAgB;EAChB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,0CAA0C;EAC1C,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,QAAQ;EACR,eAAe;EACf,cAAc;AAChB;;AAEA;EACE,kBAAkB;EAClB,aAAa;EACb,SAAS;EACT,2BAA2B;EAC3B,aAAa;EACb,SAAS;EACT,UAAU;AACZ;;AAEA;;EAEE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,yBAAyB;EACzB,iBAAiB;EACjB,cAAc;EACd,eAAe;EACf,iBAAiB;EACjB,cAAc;EACd,eAAe;EACf,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,UAAU;EACV,yBAAyB;EACzB,wCAAwC;AAC1C;;AAEA;;EAEE,mBAAmB;EACnB,YAAY;EACZ,qBAAqB;EACrB,wCAAwC;AAC1C;;AAEA;EACE,qBAAqB;EACrB,cAAc;AAChB;;AAEA;EACE,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE,OAAO;EACP,eAAe;EACf,iBAAiB;EACjB,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,gBAAgB;EAChB,eAAe;EACf,yBAAyB;AAC3B;;AAEA;EACE,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,mBAAmB;EACnB,WAAW;AACb;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,mBAAmB;EACnB,WAAW;AACb;;AAEA;EACE,kBAAkB;EAClB,UAAU;EACV,WAAW;EACX,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,yBAAyB;EACzB,iBAAiB;EACjB,cAAc;EACd,eAAe;EACf,cAAc;EACd,eAAe;EACf,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,UAAU;EACV,yBAAyB;EACzB,WAAW;EACX,wCAAwC;AAC1C;;AAEA;EACE,mBAAmB;EACnB,YAAY;EACZ,qBAAqB;EACrB,wCAAwC;AAC1C;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,mBAAmB;EACnB,YAAY;AACd;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,WAAW;EACX,aAAa;EACb,SAAS;EACT,mBAAmB;EACnB,iBAAiB;EACjB,kBAAkB;EAClB,kBAAkB;EAClB,wCAAwC;EACxC,aAAa;AACf;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,YAAY;EACZ,eAAe;EACf,iBAAiB;EACjB,eAAe;EACf,gCAAgC;AAClC;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,eAAe;EACf,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,WAAW;AACb;;AAEA;EACE,eAAe;EACf,MAAM;EACN,OAAO;EACP,QAAQ;EACR,SAAS;EACT,8BAA8B;EAC9B,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,aAAa;EACb,0BAA0B;AAC5B;;AAEA;EACE,iBAAiB;EACjB,mBAAmB;EACnB,aAAa;EACb,gBAAgB;EAChB,UAAU;EACV,gBAAgB;EAChB,gBAAgB;EAChB,0CAA0C;EAC1C,kBAAkB;EAClB,0BAA0B;AAC5B;AACA;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;EACX,WAAW;EACX,YAAY;EACZ,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;EAClB,eAAe;EACf,cAAc;EACd,eAAe;EACf,yBAAyB;EACzB,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,WAAW;AACb;;AAEA;EACE,mBAAmB;EACnB,WAAW;AACb;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,kBAAkB;EAClB,gBAAgB;EAChB,WAAW;EACX,eAAe;AACjB;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,eAAe;EACf,YAAY;EACZ,6BAA6B;AAC/B;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,mBAAmB;EACnB,8BAA8B;EAC9B,kBAAkB;EAClB,mBAAmB;EACnB,kBAAkB;EAClB,8BAA8B;AAChC;;AAEA;EACE,iBAAiB;EACjB,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,SAAS;EACT,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,eAAe;EACf,WAAW;AACb;;AAEA;EACE;IACE,UAAU;IACV,aAAa;EACf;EACA;IACE,UAAU;IACV,iBAAiB;EACnB;AACF;;AAEA;EACE,WAAW;EACX,aAAa;EACb,yBAAyB;EACzB,kBAAkB;EAClB,eAAe;EACf,oBAAoB;EACpB,gBAAgB;EAChB,kCAAkC;EAClC,YAAY;EACZ,kBAAkB;AACpB;AACA;EACE,aAAa;EACb,qBAAqB;AACvB;;AAEA;EACE,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,YAAY;EACZ,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,gBAAgB;EAChB,eAAe;EACf,gCAAgC;EAChC,gBAAgB;AAClB;;AAEA;EACE,mBAAmB;AACrB;;AAEA,gCAAgC;AAChC;EACE,UAAU;AACZ;;AAEA;EACE,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,mBAAmB;AACrB;;AAEA,gCAAgC;AAChC;EACE,gBAAgB;EAChB,eAAe;EACf,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,yBAAyB;EACzB,eAAe;AACjB;;AAEA;EACE,eAAe;AACjB;;;AAGA;EACE,sBAAsB;EACtB,oBAAoB;EACpB,kBAAkB;EAClB,gBAAgB;EAChB,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,eAAe;EACf,aAAa;EACb,kCAAkC;EAClC,qBAAqB;EACrB,qBAAqB;EACrB,YAAY;EACZ,iBAAiB;EACjB,yBAAyB;EACzB,sBAAsB;EACtB,qBAAqB;EACrB,kBAAkB;AACpB;;AAEA;EACE,qBAAqB;EACrB,6CAA6C;AAC/C;;AAEA;EACE,cAAc;EACd,WAAW;AACb","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\r\n  overflow: hidden;\r\n}\r\n\r\n.app {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n}\r\n\r\n.tree-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  overflow: hidden;\r\n  background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%);\r\n  cursor: grab;\r\n}\r\n\r\n.tree-container:active {\r\n  cursor: grabbing;\r\n}\r\n\r\n.tree-canvas {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  transform-origin: 0 0;\r\n  will-change: transform;\r\n  transition: transform 0.1s ease-out;\r\n}\r\n\r\n.connection-lines {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  pointer-events: none;\r\n  overflow: visible;\r\n  z-index: 1;\r\n}\r\n\r\n.nodes-layer {\r\n  position: relative;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  z-index: 2;\r\n}\r\n\r\n.node {\r\n  position: absolute;\r\n  background: white;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  padding: 10px 5px 5px 5px;\r\n  width: 200px;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  border: 2px solid transparent;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node:hover {\r\n  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transform: translate(-50%, -2px);\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.main-node {\r\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n  color: white;\r\n  width: 200px;\r\n  max-height: 250px;\r\n  border: 3px solid #ffd700;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.main-node:hover {\r\n  border-color: #ffd700;\r\n}\r\n\r\n.child-node {\r\n  background: white;\r\n  color: #333;\r\n  height: 250px;\r\n  position: relative;\r\n}\r\n#ResetButton{\r\n  width: 60px;\r\n}\r\n.node.inactive {\r\n  opacity: 0.5;\r\n  background: #e0e0e0;\r\n  color: #999;\r\n}\r\n\r\n.node.inactive:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.node-content {\r\n  flex: 1;\r\n  overflow-y: auto;\r\n  overflow-x: hidden;\r\n  padding-left: 5px;\r\n  min-height: 0;\r\n}\r\n\r\n.node-label {\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n  text-transform: uppercase;\r\n  letter-spacing: 0.5px;\r\n  margin-bottom: 8px;\r\n  opacity: 0.8;\r\n}\r\n\r\n.main-node .node-label {\r\n  color: #ffd700;\r\n}\r\n\r\n.child-node .node-label {\r\n  color: #4a90e2;\r\n}\r\n\r\n.node-preview {\r\n  font-size: 13px;\r\n  line-height: 1.4;\r\n  margin-bottom: 5px;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node-preview strong {\r\n  font-weight: 600;\r\n  color: #4a90e2;\r\n}\r\n\r\n.main-node .node-preview {\r\n  color: white;\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n}\r\n\r\n.node-solution-preview {\r\n  font-size: 11px;\r\n  font-style: italic;\r\n  opacity: 0.9;\r\n  margin-top: 5px;\r\n  padding-top: 5px;\r\n  border-top: 1px solid rgba(0, 0, 0, 0.1);\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n\r\n.main-node .node-solution-preview {\r\n  border-top-color: rgba(255, 255, 255, 0.3);\r\n  color: #ffd700;\r\n}\r\n\r\n.node-actions {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.node-actions-bottom {\r\n  position: absolute;\r\n  bottom: -15px;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n  display: flex;\r\n  gap: 15px;\r\n  z-index: 5;\r\n}\r\n\r\n.btn-add-circle,\r\n.btn-toggle-circle {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #4a90e2;\r\n  background: white;\r\n  color: #4a90e2;\r\n  font-size: 20px;\r\n  font-weight: bold;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-add-circle:hover,\r\n.btn-toggle-circle:hover {\r\n  background: #4a90e2;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle-circle.inactive {\r\n  border-color: #ff6b6b;\r\n  color: #ff6b6b;\r\n}\r\n\r\n.btn-toggle-circle.inactive:hover {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.node-actions button {\r\n  flex: 1;\r\n  min-width: 80px;\r\n  padding: 6px 10px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 11px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.btn-add {\r\n  background: #4a90e2;\r\n  color: white;\r\n}\r\n\r\n.btn-add:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.main-node .btn-add {\r\n  background: #ffd700;\r\n  color: #333;\r\n}\r\n\r\n.main-node .btn-add:hover {\r\n  background: #ffed4e;\r\n}\r\n\r\n.btn-toggle {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.btn-delete {\r\n  position: absolute;\r\n  top: -15px;\r\n  right: 20px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #ff4757;\r\n  background: white;\r\n  color: #ff4757;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  z-index: 10;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-delete:hover {\r\n  background: #ff4757;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle:hover {\r\n  background: #d0d0d0;\r\n}\r\n\r\n.btn-toggle.inactive {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-toggle.inactive:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.zoom-controls {\r\n  position: fixed;\r\n  bottom: 20px;\r\n  right: 20px;\r\n  display: flex;\r\n  gap: 10px;\r\n  align-items: center;\r\n  background: white;\r\n  padding: 10px 15px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  z-index: 1000;\r\n}\r\n\r\n.zoom-controls button {\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n}\r\n\r\n.zoom-controls button:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.zoom-controls span {\r\n  min-width: 50px;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  color: #333;\r\n}\r\n\r\n.edit-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  z-index: 2000;\r\n  backdrop-filter: blur(5px);\r\n}\r\n\r\n.edit-modal {\r\n  background: white;\r\n  border-radius: 12px;\r\n  padding: 30px;\r\n  max-width: 600px;\r\n  width: 90%;\r\n  max-height: 80vh;\r\n  overflow-y: auto;\r\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\r\n  position: relative;\r\n  cursor: default !important;\r\n}\r\n.edit-modal h2 {\r\n  margin-bottom: 25px;\r\n  color: #333;\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n}\r\n\r\n.close-modal {\r\n  position: absolute;\r\n  top: 15px;\r\n  right: 15px;\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  background: #f0f0f0;\r\n  border-radius: 50%;\r\n  font-size: 24px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: #666;\r\n}\r\n\r\n.close-modal:hover {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.form-group {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.form-group label {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n  font-weight: 600;\r\n  color: #333;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-icon {\r\n  margin-left: 8px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  opacity: 0.6;\r\n  transition: opacity 0.2s ease;\r\n}\r\n\r\n.help-icon:hover {\r\n  opacity: 1;\r\n}\r\n\r\n.help-section {\r\n  background: #f0f7ff;\r\n  border-left: 4px solid #4a90e2;\r\n  padding: 12px 16px;\r\n  margin-bottom: 12px;\r\n  border-radius: 4px;\r\n  animation: slideDown 0.3s ease;\r\n}\r\n\r\n.help-section h4 {\r\n  margin: 0 0 8px 0;\r\n  color: #4a90e2;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-section ul {\r\n  margin: 0;\r\n  padding-left: 20px;\r\n}\r\n\r\n.help-section li {\r\n  margin-bottom: 6px;\r\n  font-size: 13px;\r\n  color: #555;\r\n}\r\n\r\n@keyframes slideDown {\r\n  from {\r\n    opacity: 0;\r\n    max-height: 0;\r\n  }\r\n  to {\r\n    opacity: 1;\r\n    max-height: 300px;\r\n  }\r\n}\r\n\r\n.form-group textarea {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-family: inherit;\r\n  resize: vertical;\r\n  transition: border-color 0.2s ease;\r\n  color: black;\r\n  caret-color: black;\r\n}\r\n.form-group textarea:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-close-modal {\r\n  width: 100%;\r\n  padding: 12px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-close-modal:hover {\r\n  background: #357abd;\r\n}\r\n\r\n/* Scrollbar styling for modal */\r\n.edit-modal::-webkit-scrollbar {\r\n  width: 8px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-track {\r\n  background: #f0f0f0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb {\r\n  background: #c0c0c0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb:hover {\r\n  background: #a0a0a0;\r\n}\r\n\r\n/* Inline editable text styles */\r\n.inline-edit-paragraph {\r\n  line-height: 1.6;\r\n  font-size: 14px;\r\n  color: #333;\r\n  padding: 12px;\r\n  background: #f8f9fa;\r\n  border-radius: 6px;\r\n  border: 2px solid #e0e0e0;\r\n  cursor: default;\r\n}\r\n\r\n.inline-edit-paragraph strong {\r\n  cursor: default;\r\n}\r\n\r\n\r\n.inline-input {\r\n  border: 1px solid #ccc;\r\n  font-family: inherit;\r\n  font-size: inherit;\r\n  padding: 2px 6px;\r\n  background: white;\r\n  border-radius: 3px;\r\n  min-width: 20px;\r\n  display: inline;\r\n  outline: none;\r\n  transition: border-color 0.2s ease;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n  color: black;\r\n  user-select: text;\r\n  -webkit-user-select: text;\r\n  -moz-user-select: text;\r\n  -ms-user-select: text;\r\n  caret-color: black;\r\n}\r\n\r\n.inline-input:focus {\r\n  border-color: #4a90e2;\r\n  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);\r\n}\r\n\r\n.inline-input:empty::before {\r\n  content: \"...\";\r\n  color: #999;\r\n}"],"sourceRoot":""}]);
+}
+
+/* Project Manager Styles */
+.project-manager {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.project-manager-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.project-manager-header h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.project-manager-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+.create-project-section {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.create-project-section h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.create-project-form {
+  display: flex;
+  gap: 12px;
+}
+
+.create-project-form input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.create-project-form input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.btn-create-project {
+  padding: 12px 24px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-create-project:hover {
+  background: #357abd;
+}
+
+.projects-list-section {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.projects-list-section h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.no-projects {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+  font-size: 14px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+.project-card:hover {
+  border-color: #4a90e2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-info h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.project-meta {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.project-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-open-project {
+  background: #4a90e2;
+  color: white;
+  flex: 1;
+}
+
+.btn-open-project:hover {
+  background: #357abd;
+}
+
+.btn-edit-project {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-edit-project:hover {
+  background: #e0e0e0;
+}
+
+.btn-delete-project {
+  background: #ff6b6b;
+  color: white;
+}
+
+.btn-delete-project:hover {
+  background: #ff5252;
+}
+
+.project-edit-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-edit-mode input {
+  padding: 10px;
+  border: 2px solid #4a90e2;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-actions button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.edit-actions button:first-child {
+  background: #4caf50;
+  color: white;
+}
+
+.edit-actions button:first-child:hover {
+  background: #45a049;
+}
+
+.edit-actions button:last-child {
+  background: #f44336;
+  color: white;
+}
+
+.edit-actions button:last-child:hover {
+  background: #da190b;
+}
+
+/* Back to Projects Button */
+.top-controls {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-back-to-projects {
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #4a90e2;
+  border-radius: 6px;
+  color: #4a90e2;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-back-to-projects:hover {
+  background: #4a90e2;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-save-project {
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #4caf50;
+  border-radius: 6px;
+  color: #4caf50;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-save-project:hover {
+  background: #4caf50;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\r\n  overflow: hidden;\r\n}\r\n\r\n.app {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n}\r\n\r\n.tree-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  overflow: hidden;\r\n  background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%);\r\n  cursor: grab;\r\n}\r\n\r\n.tree-container:active {\r\n  cursor: grabbing;\r\n}\r\n\r\n.tree-canvas {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  transform-origin: 0 0;\r\n  will-change: transform;\r\n  transition: transform 0.1s ease-out;\r\n}\r\n\r\n.connection-lines {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  pointer-events: none;\r\n  overflow: visible;\r\n  z-index: 1;\r\n}\r\n\r\n.nodes-layer {\r\n  position: relative;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  z-index: 2;\r\n}\r\n\r\n.node {\r\n  position: absolute;\r\n  background: white;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  padding: 10px 5px 5px 5px;\r\n  width: 200px;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  border: 2px solid transparent;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node:hover {\r\n  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transform: translate(-50%, -2px);\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.main-node {\r\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n  color: white;\r\n  width: 200px;\r\n  max-height: 250px;\r\n  border: 3px solid #ffd700;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.main-node:hover {\r\n  border-color: #ffd700;\r\n}\r\n\r\n.child-node {\r\n  background: white;\r\n  color: #333;\r\n  height: 250px;\r\n  position: relative;\r\n}\r\n#ResetButton{\r\n  width: 60px;\r\n}\r\n.node.inactive {\r\n  opacity: 0.5;\r\n  background: #e0e0e0;\r\n  color: #999;\r\n}\r\n\r\n.node.inactive:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.node-content {\r\n  flex: 1;\r\n  overflow-y: auto;\r\n  overflow-x: hidden;\r\n  padding-left: 5px;\r\n  min-height: 0;\r\n}\r\n\r\n.node-label {\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n  text-transform: uppercase;\r\n  letter-spacing: 0.5px;\r\n  margin-bottom: 8px;\r\n  opacity: 0.8;\r\n}\r\n\r\n.main-node .node-label {\r\n  color: #ffd700;\r\n}\r\n\r\n.child-node .node-label {\r\n  color: #4a90e2;\r\n}\r\n\r\n.node-preview {\r\n  font-size: 13px;\r\n  line-height: 1.4;\r\n  margin-bottom: 5px;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node-preview strong {\r\n  font-weight: 600;\r\n  color: #4a90e2;\r\n}\r\n\r\n.main-node .node-preview {\r\n  color: white;\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n}\r\n\r\n.node-solution-preview {\r\n  font-size: 11px;\r\n  font-style: italic;\r\n  opacity: 0.9;\r\n  margin-top: 5px;\r\n  padding-top: 5px;\r\n  border-top: 1px solid rgba(0, 0, 0, 0.1);\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n\r\n.main-node .node-solution-preview {\r\n  border-top-color: rgba(255, 255, 255, 0.3);\r\n  color: #ffd700;\r\n}\r\n\r\n.node-actions {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.node-actions-bottom {\r\n  position: absolute;\r\n  bottom: -15px;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n  display: flex;\r\n  gap: 15px;\r\n  z-index: 5;\r\n}\r\n\r\n.btn-add-circle,\r\n.btn-toggle-circle {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #4a90e2;\r\n  background: white;\r\n  color: #4a90e2;\r\n  font-size: 20px;\r\n  font-weight: bold;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-add-circle:hover,\r\n.btn-toggle-circle:hover {\r\n  background: #4a90e2;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle-circle.inactive {\r\n  border-color: #ff6b6b;\r\n  color: #ff6b6b;\r\n}\r\n\r\n.btn-toggle-circle.inactive:hover {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.node-actions button {\r\n  flex: 1;\r\n  min-width: 80px;\r\n  padding: 6px 10px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 11px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.btn-add {\r\n  background: #4a90e2;\r\n  color: white;\r\n}\r\n\r\n.btn-add:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.main-node .btn-add {\r\n  background: #ffd700;\r\n  color: #333;\r\n}\r\n\r\n.main-node .btn-add:hover {\r\n  background: #ffed4e;\r\n}\r\n\r\n.btn-toggle {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.btn-delete {\r\n  position: absolute;\r\n  top: -15px;\r\n  right: 20px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #ff4757;\r\n  background: white;\r\n  color: #ff4757;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  z-index: 10;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-delete:hover {\r\n  background: #ff4757;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle:hover {\r\n  background: #d0d0d0;\r\n}\r\n\r\n.btn-toggle.inactive {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-toggle.inactive:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.zoom-controls {\r\n  position: fixed;\r\n  bottom: 20px;\r\n  right: 20px;\r\n  display: flex;\r\n  gap: 10px;\r\n  align-items: center;\r\n  background: white;\r\n  padding: 10px 15px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  z-index: 1000;\r\n}\r\n\r\n.zoom-controls button {\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n}\r\n\r\n.zoom-controls button:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.zoom-controls span {\r\n  min-width: 50px;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  color: #333;\r\n}\r\n\r\n.edit-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  z-index: 2000;\r\n  backdrop-filter: blur(5px);\r\n}\r\n\r\n.edit-modal {\r\n  background: white;\r\n  border-radius: 12px;\r\n  padding: 30px;\r\n  max-width: 600px;\r\n  width: 90%;\r\n  max-height: 80vh;\r\n  overflow-y: auto;\r\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\r\n  position: relative;\r\n  cursor: default !important;\r\n}\r\n.edit-modal h2 {\r\n  margin-bottom: 25px;\r\n  color: #333;\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n}\r\n\r\n.close-modal {\r\n  position: absolute;\r\n  top: 15px;\r\n  right: 15px;\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  background: #f0f0f0;\r\n  border-radius: 50%;\r\n  font-size: 24px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: #666;\r\n}\r\n\r\n.close-modal:hover {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.form-group {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.form-group label {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n  font-weight: 600;\r\n  color: #333;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-icon {\r\n  margin-left: 8px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  opacity: 0.6;\r\n  transition: opacity 0.2s ease;\r\n}\r\n\r\n.help-icon:hover {\r\n  opacity: 1;\r\n}\r\n\r\n.help-section {\r\n  background: #f0f7ff;\r\n  border-left: 4px solid #4a90e2;\r\n  padding: 12px 16px;\r\n  margin-bottom: 12px;\r\n  border-radius: 4px;\r\n  animation: slideDown 0.3s ease;\r\n}\r\n\r\n.help-section h4 {\r\n  margin: 0 0 8px 0;\r\n  color: #4a90e2;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-section ul {\r\n  margin: 0;\r\n  padding-left: 20px;\r\n}\r\n\r\n.help-section li {\r\n  margin-bottom: 6px;\r\n  font-size: 13px;\r\n  color: #555;\r\n}\r\n\r\n@keyframes slideDown {\r\n  from {\r\n    opacity: 0;\r\n    max-height: 0;\r\n  }\r\n  to {\r\n    opacity: 1;\r\n    max-height: 300px;\r\n  }\r\n}\r\n\r\n.form-group textarea {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-family: inherit;\r\n  resize: vertical;\r\n  transition: border-color 0.2s ease;\r\n  color: black;\r\n  caret-color: black;\r\n}\r\n.form-group textarea:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-close-modal {\r\n  width: 100%;\r\n  padding: 12px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-close-modal:hover {\r\n  background: #357abd;\r\n}\r\n\r\n/* Scrollbar styling for modal */\r\n.edit-modal::-webkit-scrollbar {\r\n  width: 8px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-track {\r\n  background: #f0f0f0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb {\r\n  background: #c0c0c0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb:hover {\r\n  background: #a0a0a0;\r\n}\r\n\r\n/* Inline editable text styles */\r\n.inline-edit-paragraph {\r\n  line-height: 1.6;\r\n  font-size: 14px;\r\n  color: #333;\r\n  padding: 12px;\r\n  background: #f8f9fa;\r\n  border-radius: 6px;\r\n  border: 2px solid #e0e0e0;\r\n  cursor: default;\r\n}\r\n\r\n.inline-edit-paragraph strong {\r\n  cursor: default;\r\n}\r\n\r\n\r\n.inline-input {\r\n  border: 1px solid #ccc;\r\n  font-family: inherit;\r\n  font-size: inherit;\r\n  padding: 2px 6px;\r\n  background: white;\r\n  border-radius: 3px;\r\n  min-width: 20px;\r\n  display: inline;\r\n  outline: none;\r\n  transition: border-color 0.2s ease;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n  color: black;\r\n  user-select: text;\r\n  -webkit-user-select: text;\r\n  -moz-user-select: text;\r\n  -ms-user-select: text;\r\n  caret-color: black;\r\n}\r\n\r\n.inline-input:focus {\r\n  border-color: #4a90e2;\r\n  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);\r\n}\r\n\r\n.inline-input:empty::before {\r\n  content: \"...\";\r\n  color: #999;\r\n}\r\n\r\n/* Project Manager Styles */\r\n.project-manager {\r\n  padding: 40px;\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  background: #f5f5f5;\r\n  min-height: 100vh;\r\n}\r\n\r\n.project-manager-header {\r\n  text-align: center;\r\n  margin-bottom: 40px;\r\n}\r\n\r\n.project-manager-header h1 {\r\n  font-size: 36px;\r\n  color: #333;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.project-manager-header p {\r\n  font-size: 16px;\r\n  color: #666;\r\n}\r\n\r\n.create-project-section {\r\n  background: white;\r\n  padding: 30px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 40px;\r\n}\r\n\r\n.create-project-section h2 {\r\n  font-size: 20px;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n.create-project-form {\r\n  display: flex;\r\n  gap: 12px;\r\n}\r\n\r\n.create-project-form input {\r\n  flex: 1;\r\n  padding: 12px 16px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  transition: border-color 0.2s;\r\n}\r\n\r\n.create-project-form input:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-create-project {\r\n  padding: 12px 24px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s;\r\n}\r\n\r\n.btn-create-project:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.projects-list-section {\r\n  background: white;\r\n  padding: 30px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.projects-list-section h2 {\r\n  font-size: 20px;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n.no-projects {\r\n  text-align: center;\r\n  color: #999;\r\n  padding: 40px;\r\n  font-size: 14px;\r\n}\r\n\r\n.projects-grid {\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\r\n  gap: 20px;\r\n}\r\n\r\n.project-card {\r\n  background: #f9f9f9;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  transition: all 0.2s;\r\n}\r\n\r\n.project-card:hover {\r\n  border-color: #4a90e2;\r\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.project-info h3 {\r\n  font-size: 18px;\r\n  color: #333;\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.project-meta {\r\n  font-size: 12px;\r\n  color: #999;\r\n  margin-bottom: 16px;\r\n}\r\n\r\n.project-actions {\r\n  display: flex;\r\n  gap: 8px;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.project-actions button {\r\n  padding: 8px 16px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 13px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n}\r\n\r\n.btn-open-project {\r\n  background: #4a90e2;\r\n  color: white;\r\n  flex: 1;\r\n}\r\n\r\n.btn-open-project:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.btn-edit-project {\r\n  background: #f0f0f0;\r\n  color: #333;\r\n}\r\n\r\n.btn-edit-project:hover {\r\n  background: #e0e0e0;\r\n}\r\n\r\n.btn-delete-project {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-delete-project:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.project-edit-mode {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 12px;\r\n}\r\n\r\n.project-edit-mode input {\r\n  padding: 10px;\r\n  border: 2px solid #4a90e2;\r\n  border-radius: 4px;\r\n  font-size: 16px;\r\n}\r\n\r\n.edit-actions {\r\n  display: flex;\r\n  gap: 8px;\r\n}\r\n\r\n.edit-actions button {\r\n  flex: 1;\r\n  padding: 8px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  transition: background 0.2s;\r\n}\r\n\r\n.edit-actions button:first-child {\r\n  background: #4caf50;\r\n  color: white;\r\n}\r\n\r\n.edit-actions button:first-child:hover {\r\n  background: #45a049;\r\n}\r\n\r\n.edit-actions button:last-child {\r\n  background: #f44336;\r\n  color: white;\r\n}\r\n\r\n.edit-actions button:last-child:hover {\r\n  background: #da190b;\r\n}\r\n\r\n/* Back to Projects Button */\r\n.top-controls {\r\n  position: fixed;\r\n  top: 20px;\r\n  left: 20px;\r\n  z-index: 1000;\r\n  display: flex;\r\n  gap: 10px;\r\n}\r\n\r\n.btn-back-to-projects {\r\n  padding: 10px 20px;\r\n  background: white;\r\n  border: 2px solid #4a90e2;\r\n  border-radius: 6px;\r\n  color: #4a90e2;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.btn-back-to-projects:hover {\r\n  background: #4a90e2;\r\n  color: white;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.btn-save-project {\r\n  padding: 10px 20px;\r\n  background: white;\r\n  border: 2px solid #4caf50;\r\n  border-radius: 6px;\r\n  color: #4caf50;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.btn-save-project:hover {\r\n  background: #4caf50;\r\n  color: white;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31423,11 +31687,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_TreeView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/TreeView */ "./src/components/TreeView.jsx");
-/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
+/* harmony import */ var _components_ProjectManager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/ProjectManager */ "./src/components/ProjectManager.jsx");
+/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
+
 
 
 
 const App = () => {
+  const [currentView, setCurrentView] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('projects'); // 'projects' or 'tree'
+  const [currentProjectId, setCurrentProjectId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [projectData, setProjectData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     projectName: 'New Project',
     LastSaveTime: null,
@@ -31452,9 +31720,18 @@ const App = () => {
       setProjectData(data);
     };
 
+    // Listen for project loaded
+    const handleProjectLoaded = (event, data) => {
+      setProjectData(data.projectData);
+      setCurrentProjectId(data.projectId);
+      setCurrentView('tree');
+    };
+
     // Listen for save requests
     const handleRequestSaveData = () => {
-      window.electronAPI.saveData(projectDataRef.current);
+      if (currentProjectId) {
+        window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+      }
     };
 
     // Listen for file saved confirmation
@@ -31464,22 +31741,57 @@ const App = () => {
       }
     };
     window.electronAPI.onFileOpened(handleFileOpened);
+    window.electronAPI.onProjectLoaded(handleProjectLoaded);
     window.electronAPI.onRequestSaveData(handleRequestSaveData);
     window.electronAPI.onFileSaved(handleFileSaved);
     return () => {
       window.electronAPI.removeListener('file-opened', handleFileOpened);
+      window.electronAPI.removeListener('project-loaded', handleProjectLoaded);
       window.electronAPI.removeListener('request-save-data', handleRequestSaveData);
       window.electronAPI.removeListener('file-saved', handleFileSaved);
     };
-  }, []);
-  const updateProjectData = newData => {
+  }, [currentProjectId]);
+
+  // Auto-save every 60 seconds when in tree view
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (currentView === 'tree' && currentProjectId) {
+      const autoSaveInterval = setInterval(() => {
+        window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+        console.log('Auto-saved project');
+      }, 60000); // 60 seconds
+
+      return () => clearInterval(autoSaveInterval);
+    }
+  }, [currentView, currentProjectId]);
+  const updateProjectData = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(newData => {
     setProjectData(newData);
-  };
+  }, []);
+  const handleSelectProject = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(projectId => {
+    window.electronAPI.loadProject(projectId);
+  }, []);
+  const handleSaveProject = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
+    if (currentProjectId) {
+      window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+      console.log('Project saved manually');
+    }
+  }, [currentProjectId]);
+  const handleBackToProjects = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
+    // Auto-save current project before going back
+    if (currentProjectId) {
+      window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+    }
+    setCurrentView('projects');
+    setCurrentProjectId(null);
+  }, [currentProjectId]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "app"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_TreeView__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, currentView === 'projects' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ProjectManager__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    onSelectProject: handleSelectProject
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_TreeView__WEBPACK_IMPORTED_MODULE_1__["default"], {
     projectData: projectData,
-    updateProjectData: updateProjectData
+    updateProjectData: updateProjectData,
+    onBackToProjects: handleBackToProjects,
+    onSaveProject: handleSaveProject
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -31735,6 +32047,129 @@ const MainQuestion = ({
 
 /***/ },
 
+/***/ "./src/components/ProjectManager.jsx"
+/*!*******************************************!*\
+  !*** ./src/components/ProjectManager.jsx ***!
+  \*******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const ProjectManager = ({
+  onSelectProject
+}) => {
+  const [projects, setProjects] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [newProjectName, setNewProjectName] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [editingProject, setEditingProject] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [editedName, setEditedName] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    loadProjects();
+
+    // Listen for project list updates
+    const handleProjectsUpdated = (event, projectList) => {
+      setProjects(projectList);
+    };
+    window.electronAPI.onProjectsUpdated(handleProjectsUpdated);
+    return () => {
+      window.electronAPI.removeListener('projects-updated', handleProjectsUpdated);
+    };
+  }, []);
+  const loadProjects = () => {
+    window.electronAPI.loadProjects();
+  };
+  const handleCreateProject = () => {
+    if (newProjectName.trim()) {
+      window.electronAPI.createProject(newProjectName.trim());
+      setNewProjectName('');
+    }
+  };
+  const handleDeleteProject = projectId => {
+    if (window.confirm('Are you sure you want to delete this project?')) {
+      window.electronAPI.deleteProject(projectId);
+    }
+  };
+  const handleRenameProject = projectId => {
+    if (editedName.trim() && editedName !== editingProject.name) {
+      window.electronAPI.renameProject(projectId, editedName.trim());
+    }
+    setEditingProject(null);
+    setEditedName('');
+  };
+  const startEditing = project => {
+    setEditingProject(project);
+    setEditedName(project.name);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "project-manager"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "project-manager-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Belief System Projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Select a project to continue or create a new one")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "create-project-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Create New Project"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "create-project-form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    placeholder: "Enter project name...",
+    value: newProjectName,
+    onChange: e => setNewProjectName(e.target.value),
+    onKeyDown: e => {
+      if (e.key === 'Enter') handleCreateProject();
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleCreateProject,
+    className: "btn-create-project"
+  }, "Create Project"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "projects-list-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Projects"), projects.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "no-projects"
+  }, "No projects yet. Create one to get started!") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "projects-grid"
+  }, projects.map(project => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    key: project.id,
+    className: "project-card"
+  }, editingProject?.id === project.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "project-edit-mode"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    value: editedName,
+    onChange: e => setEditedName(e.target.value),
+    onKeyDown: e => {
+      if (e.key === 'Enter') handleRenameProject(project.id);
+      if (e.key === 'Escape') setEditingProject(null);
+    },
+    autoFocus: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "edit-actions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => handleRenameProject(project.id)
+  }, "\u2713"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => setEditingProject(null)
+  }, "\u2717"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "project-info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, project.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "project-meta"
+  }, "Last modified: ", new Date(project.lastModified).toLocaleDateString())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "project-actions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => onSelectProject(project.id),
+    className: "btn-open-project"
+  }, "Open"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => startEditing(project),
+    className: "btn-edit-project"
+  }, "Rename"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => handleDeleteProject(project.id),
+    className: "btn-delete-project"
+  }, "Delete"))))))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProjectManager);
+
+/***/ },
+
 /***/ "./src/components/TreeView.jsx"
 /*!*************************************!*\
   !*** ./src/components/TreeView.jsx ***!
@@ -31758,7 +32193,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const TreeView = ({
   projectData,
-  updateProjectData
+  updateProjectData,
+  onBackToProjects,
+  onSaveProject
 }) => {
   const [zoom, setZoom] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1);
   const [pan, setPan] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
@@ -31774,6 +32211,12 @@ const TreeView = ({
   const [selectedNode, setSelectedNode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const containerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const [nodePositions, setNodePositions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
+  const zoomRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(zoom);
+
+  // Keep zoom ref in sync
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    zoomRef.current = zoom;
+  }, [zoom]);
 
   // Calculate positions for all visible nodes using layer-based layout
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -31898,19 +32341,42 @@ const TreeView = ({
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const container = containerRef.current;
     if (!container) return;
+    let accumulatedDelta = 0;
+    let rafId = null;
+    let debounceTimer = null;
     const handleWheel = e => {
       e.preventDefault();
-      const delta = e.deltaY * -0.002;
-      const newZoom = Math.min(Math.max(0.1, zoom + delta), 3);
-      setZoom(newZoom);
+
+      // Lower sensitivity (requires more scrolling)
+      const sensitivity = e.deltaMode === 0 ? -0.0005 : -0.001; // DOM_DELTA_PIXEL vs DOM_DELTA_LINE
+      accumulatedDelta += e.deltaY * sensitivity;
+
+      // Clear existing timers
+      if (debounceTimer) clearTimeout(debounceTimer);
+      if (rafId) cancelAnimationFrame(rafId);
+
+      // Wait 150ms after last scroll event before applying zoom
+      debounceTimer = setTimeout(() => {
+        rafId = requestAnimationFrame(() => {
+          // Apply zoom multiplier for bigger steps
+          const zoomAmount = accumulatedDelta * 4;
+          const newZoom = Math.min(Math.max(0.1, zoomRef.current + zoomAmount), 3);
+          setZoom(newZoom);
+          accumulatedDelta = 0;
+          rafId = null;
+        });
+      }, 100);
     };
     container.addEventListener('wheel', handleWheel, {
       passive: false
     });
     return () => {
       container.removeEventListener('wheel', handleWheel);
+      if (rafId) cancelAnimationFrame(rafId);
+      if (debounceTimer) clearTimeout(debounceTimer);
     };
-  }, [zoom]);
+  }, []); // Remove zoom dependency
+
   const handleMouseDown = e => {
     if (e.button === 0 && !e.target.closest('.node') && !editingNode) {
       setIsDragging(true);
@@ -32291,6 +32757,9 @@ const TreeView = ({
       });
     });
   };
+
+  // Memoize line rendering to avoid recalculating on every zoom change
+  const memoizedLines = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => renderLines(), [projectData, nodePositions, selectedNode]);
   const renderNode = (node, isMain = false) => {
     const pos = nodePositions[node.ID];
     if (isMain) {
@@ -32344,7 +32813,7 @@ const TreeView = ({
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
     className: "connection-lines"
-  }, renderLines()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, memoizedLines), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "nodes-layer"
   }, renderNodes())), editingNode && (editingNode.ID.startsWith('main') ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EditMainModal__WEBPACK_IMPORTED_MODULE_3__["default"], {
     editingNode: editingNode,
@@ -32355,6 +32824,14 @@ const TreeView = ({
     closeEditModal: closeEditModal,
     updateNode: updateNode
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "top-controls"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: onBackToProjects,
+    className: "btn-back-to-projects"
+  }, "\u2190 Back to Projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: onSaveProject,
+    className: "btn-save-project"
+  }, "\uD83D\uDCBE Save")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "zoom-controls"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: () => setZoom(Math.min(zoom + 0.2, 3))

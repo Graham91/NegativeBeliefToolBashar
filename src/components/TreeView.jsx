@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import MainQuestion from './MainQuestion';
 import ChildQuestion from './ChildQuestion';
 import EditMainModal from './EditMainModal';
 import EditChildModal from './EditChildModal';
 
-const TreeView = ({ projectData, updateProjectData }) => {
+const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProject }) => {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 600, y: 100 });
   const [isDragging, setIsDragging] = useState(false);
@@ -13,6 +13,12 @@ const TreeView = ({ projectData, updateProjectData }) => {
   const [selectedNode, setSelectedNode] = useState(null);
   const containerRef = useRef(null);
   const [nodePositions, setNodePositions] = useState({});
+  const zoomRef = useRef(zoom);
+
+  // Keep zoom ref in sync
+  useEffect(() => {
+    zoomRef.current = zoom;
+  }, [zoom]);
 
   // Calculate positions for all visible nodes using layer-based layout
   useEffect(() => {
@@ -145,19 +151,42 @@ const TreeView = ({ projectData, updateProjectData }) => {
     const container = containerRef.current;
     if (!container) return;
 
+    let accumulatedDelta = 0;
+    let rafId = null;
+    let debounceTimer = null;
+
     const handleWheel = (e) => {
       e.preventDefault();
-      const delta = e.deltaY * -0.002;
-      const newZoom = Math.min(Math.max(0.1, zoom + delta), 3);
-      setZoom(newZoom);
+      
+      // Lower sensitivity (requires more scrolling)
+      const sensitivity = e.deltaMode === 0 ? -0.0005 : -0.001; // DOM_DELTA_PIXEL vs DOM_DELTA_LINE
+      accumulatedDelta += e.deltaY * sensitivity;
+
+      // Clear existing timers
+      if (debounceTimer) clearTimeout(debounceTimer);
+      if (rafId) cancelAnimationFrame(rafId);
+
+      // Wait 150ms after last scroll event before applying zoom
+      debounceTimer = setTimeout(() => {
+        rafId = requestAnimationFrame(() => {
+          // Apply zoom multiplier for bigger steps
+          const zoomAmount = accumulatedDelta * 4;
+          const newZoom = Math.min(Math.max(0.1, zoomRef.current + zoomAmount), 3);
+          setZoom(newZoom);
+          accumulatedDelta = 0;
+          rafId = null;
+        });
+      }, 100);
     };
 
     container.addEventListener('wheel', handleWheel, { passive: false });
 
     return () => {
       container.removeEventListener('wheel', handleWheel);
+      if (rafId) cancelAnimationFrame(rafId);
+      if (debounceTimer) clearTimeout(debounceTimer);
     };
-  }, [zoom]);
+  }, []); // Remove zoom dependency
 
   const handleMouseDown = (e) => {
     if (e.button === 0 && !e.target.closest('.node') && !editingNode) {
@@ -580,6 +609,9 @@ const TreeView = ({ projectData, updateProjectData }) => {
     });
   };
 
+  // Memoize line rendering to avoid recalculating on every zoom change
+  const memoizedLines = useMemo(() => renderLines(), [projectData, nodePositions, selectedNode]);
+
   const renderNode = (node, isMain = false) => {
     const pos = nodePositions[node.ID];
     
@@ -646,7 +678,7 @@ const TreeView = ({ projectData, updateProjectData }) => {
         }}
       >
         <svg className="connection-lines">
-          {renderLines()}
+          {memoizedLines}
         </svg>
         <div className="nodes-layer">
           {renderNodes()}
@@ -668,6 +700,15 @@ const TreeView = ({ projectData, updateProjectData }) => {
           />
         )
       )}
+
+      <div className="top-controls">
+        <button onClick={onBackToProjects} className="btn-back-to-projects">
+          ← Back to Projects
+        </button>
+        <button onClick={onSaveProject} className="btn-save-project">
+          💾 Save
+        </button>
+      </div>
 
       <div className="zoom-controls">
         <button onClick={() => setZoom(Math.min(zoom + 0.2, 3))}>+</button>

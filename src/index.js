@@ -9,6 +9,20 @@ if (require('electron-squirrel-startup')) {
 
 let mainWindow;
 
+// Project management paths
+const getProjectsDir = () => {
+  const userDataPath = app.getPath('userData');
+  const projectsDir = path.join(userDataPath, 'projects');
+  if (!fs.existsSync(projectsDir)) {
+    fs.mkdirSync(projectsDir, { recursive: true });
+  }
+  return projectsDir;
+};
+
+const getProjectFilePath = (projectId) => {
+  return path.join(getProjectsDir(), `${projectId}.json`);
+};
+
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -142,6 +156,87 @@ ipcMain.on('save-data', async (event, data) => {
   data.LastSaveTime = new Date().toISOString();
   fs.writeFileSync(currentFilePath, JSON.stringify(data, null, 2));
   mainWindow.webContents.send('file-saved', { success: true, filePath: currentFilePath });
+});
+
+// Project Management IPC Handlers
+const sendProjectsList = () => {
+  const projectsDir = getProjectsDir();
+  const files = fs.readdirSync(projectsDir);
+  const projects = files
+    .filter(file => file.endsWith('.json'))
+    .map(file => {
+      const filePath = path.join(projectsDir, file);
+      const stats = fs.statSync(filePath);
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      return {
+        id: path.basename(file, '.json'),
+        name: data.projectName || 'Untitled Project',
+        lastModified: stats.mtime.toISOString()
+      };
+    })
+    .sort((a, b) => new Date(b.lastModified) - new Date(a.lastModified));
+  
+  mainWindow.webContents.send('projects-updated', projects);
+};
+
+ipcMain.on('load-projects', (event) => {
+  sendProjectsList();
+});
+
+ipcMain.on('create-project', (event, projectName) => {
+  const projectId = `project_${Date.now()}`;
+  const newProjectData = {
+    projectName: projectName,
+    LastSaveTime: new Date().toISOString(),
+    ProjectStructure: {
+      MainQuestion: {
+        QuestionInput: '',
+        ID: 'main-0',
+        solution: '',
+        children: []
+      }
+    }
+  };
+  
+  const filePath = getProjectFilePath(projectId);
+  fs.writeFileSync(filePath, JSON.stringify(newProjectData, null, 2));
+  
+  // Reload projects list
+  sendProjectsList();
+});
+
+ipcMain.on('delete-project', (event, projectId) => {
+  const filePath = getProjectFilePath(projectId);
+  if (fs.existsSync(filePath)) {
+    fs.unlinkSync(filePath);
+  }
+  sendProjectsList();
+});
+
+ipcMain.on('rename-project', (event, { id, newName }) => {
+  const filePath = getProjectFilePath(id);
+  if (fs.existsSync(filePath)) {
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    data.projectName = newName;
+    data.LastSaveTime = new Date().toISOString();
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  }
+  sendProjectsList();
+});
+
+ipcMain.on('load-project', (event, projectId) => {
+  const filePath = getProjectFilePath(projectId);
+  if (fs.existsSync(filePath)) {
+    const projectData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    mainWindow.webContents.send('project-loaded', { projectId, projectData });
+  }
+});
+
+ipcMain.on('save-project-data', (event, { id, data }) => {
+  const filePath = getProjectFilePath(id);
+  data.LastSaveTime = new Date().toISOString();
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  mainWindow.webContents.send('file-saved', { success: true, filePath });
 });
 
 // This method will be called when Electron has finished
