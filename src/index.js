@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, dialog, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, dialog, ipcMain, session } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
 
@@ -239,10 +239,71 @@ ipcMain.on('save-project-data', (event, { id, data }) => {
   mainWindow.webContents.send('file-saved', { success: true, filePath });
 });
 
+// PDF Export Handler
+ipcMain.on('save-pdf', async (event, { pdfData, defaultFileName }) => {
+  const result = await dialog.showSaveDialog(mainWindow, {
+    title: 'Save Solutions PDF',
+    defaultPath: defaultFileName,
+    filters: [{ name: 'PDF Files', extensions: ['pdf'] }]
+  });
+
+  if (!result.canceled && result.filePath) {
+    const buffer = Buffer.from(pdfData);
+    fs.writeFileSync(result.filePath, buffer);
+  }
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  // Enable spell checker for the default session
+  session.defaultSession.setSpellCheckerEnabled(true);
+  session.defaultSession.setSpellCheckerLanguages(['en-US']);
+
+  // Enable spell checker context menu with suggestions
+  app.on('web-contents-created', (event, contents) => {
+    contents.on('context-menu', (event, params) => {
+      const { Menu, MenuItem } = require('electron');
+      const menu = new Menu();
+
+      // Add spelling suggestions if there are any
+      if (params.misspelledWord) {
+        params.dictionarySuggestions.forEach(suggestion => {
+          menu.append(new MenuItem({
+            label: suggestion,
+            click: () => contents.replaceMisspelling(suggestion)
+          }));
+        });
+
+        // Add separator if we have suggestions
+        if (params.dictionarySuggestions.length > 0) {
+          menu.append(new MenuItem({ type: 'separator' }));
+        }
+
+        // Add "Add to dictionary" option
+        menu.append(new MenuItem({
+          label: 'Add to Dictionary',
+          click: () => contents.session.addWordToSpellCheckerDictionary(params.misspelledWord)
+        }));
+
+        menu.append(new MenuItem({ type: 'separator' }));
+      }
+
+      // Add standard editing options
+      if (params.isEditable) {
+        menu.append(new MenuItem({ label: 'Cut', role: 'cut', enabled: params.editFlags.canCut }));
+        menu.append(new MenuItem({ label: 'Copy', role: 'copy', enabled: params.editFlags.canCopy }));
+        menu.append(new MenuItem({ label: 'Paste', role: 'paste', enabled: params.editFlags.canPaste }));
+      }
+
+      // Show the menu if it has items
+      if (menu.items.length > 0) {
+        menu.popup();
+      }
+    });
+  });
+
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the

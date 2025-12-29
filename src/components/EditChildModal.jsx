@@ -18,6 +18,7 @@ const EditChildModal = ({ editingNode, closeEditModal, updateNode }) => {
                             className="inline-input"
                             role="textbox"
                             contentEditable
+                            spellCheck={true}
                             suppressContentEditableWarning
                             onBlur={(e) => updateNode(editingNode.ID, 'If', e.target.textContent)}
                             onKeyDown={(e) => {
@@ -37,6 +38,7 @@ const EditChildModal = ({ editingNode, closeEditModal, updateNode }) => {
                         value={editingNode.then || ''}
                         onChange={(e) => updateNode(editingNode.ID, 'then', e.target.value)}
                         rows="3"
+                        spellCheck={true}
                     />
                 </div>
                 <div className="form-group">
@@ -66,6 +68,7 @@ const EditChildModal = ({ editingNode, closeEditModal, updateNode }) => {
                         value={editingNode.Solution || ''}
                         onChange={(e) => updateNode(editingNode.ID, 'Solution', e.target.value)}
                         rows="3"
+                        spellCheck={true}
                     />
                 </div>
 

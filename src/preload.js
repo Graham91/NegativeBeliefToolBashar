@@ -20,6 +20,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   onProjectLoaded: (callback) => ipcRenderer.on('project-loaded', (_event, data) => callback(_event, data)),
   saveProjectData: (id, data) => ipcRenderer.send('save-project-data', { id, data }),
   
+  // PDF export
+  savePDF: (pdfData, defaultFileName) => ipcRenderer.send('save-pdf', { pdfData, defaultFileName }),
+  
   removeListener: (channel, callback) => ipcRenderer.removeListener(channel, callback)
 });
 

@@ -3,6 +3,8 @@ import MainQuestion from './MainQuestion';
 import ChildQuestion from './ChildQuestion';
 import EditMainModal from './EditMainModal';
 import EditChildModal from './EditChildModal';
+import ConfirmDeleteModal from './ConfirmDeleteModal';
+import { jsPDF } from 'jspdf';
 
 const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProject }) => {
   const [zoom, setZoom] = useState(1);
@@ -11,6 +13,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [editingNode, setEditingNode] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
+  const [deleteConfirm, setDeleteConfirm] = useState({ isOpen: false, nodeId: null });
   const containerRef = useRef(null);
   const [nodePositions, setNodePositions] = useState({});
   const zoomRef = useRef(zoom);
@@ -284,6 +287,11 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
   };
 
   const deleteChild = (childId) => {
+    setDeleteConfirm({ isOpen: true, nodeId: childId });
+  };
+
+  const confirmDelete = () => {
+    const childId = deleteConfirm.nodeId;
     const removeChildFromNode = (node) => {
       if (node.children && node.children.length > 0) {
         // Filter out the child with the given ID
@@ -305,6 +313,107 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         MainQuestion: updatedMainQuestion
       }
     });
+    setDeleteConfirm({ isOpen: false, nodeId: null });
+  };
+
+  const cancelDelete = () => {
+    setDeleteConfirm({ isOpen: false, nodeId: null });
+  };
+
+  const printSolutions = async () => {
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 20;
+    const maxWidth = pageWidth - 2 * margin;
+    let yPosition = margin;
+
+    // Title
+    doc.setFontSize(18);
+    doc.setFont(undefined, 'bold');
+    doc.text(projectData?.projectName || 'Project Solutions', margin, yPosition);
+    yPosition += 10;
+
+    // Add date
+    doc.setFontSize(10);
+    doc.setFont(undefined, 'normal');
+    const currentDate = new Date().toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+    doc.text(`Generated: ${currentDate}`, margin, yPosition);
+    yPosition += 15;
+
+    // Collect all unique solutions from the tree
+    const solutionsSet = new Set();
+    const collectSolutions = (node) => {
+      if (node.ID.startsWith('main')) {
+        // Main question
+        const solution = node.solution || node.Solution;
+        if (solution) {
+          solutionsSet.add(solution);
+        }
+      } else {
+        // Child question
+        if (node.Solution) {
+          solutionsSet.add(node.Solution);
+        }
+      }
+
+      if (node.children && node.children.length > 0) {
+        node.children.forEach(child => {
+          collectSolutions(child);
+        });
+      }
+    };
+
+    if (projectData?.ProjectStructure?.MainQuestion) {
+      collectSolutions(projectData.ProjectStructure.MainQuestion);
+    }
+
+    // Convert to array
+    const solutions = Array.from(solutionsSet);
+
+    // Helper function to add text with word wrap and page break handling
+    const addText = (text, x, y, options = {}) => {
+      const lines = doc.splitTextToSize(text, maxWidth - (options.indent || 0));
+      
+      for (let i = 0; i < lines.length; i++) {
+        if (y + 7 > pageHeight - margin) {
+          doc.addPage();
+          y = margin;
+        }
+        doc.text(lines[i], x, y);
+        y += 7;
+      }
+      return y;
+    };
+
+    // Print each unique solution
+    doc.setFontSize(11);
+    doc.setFont(undefined, 'normal');
+    
+    solutions.forEach((solution, index) => {
+      if (yPosition + 15 > pageHeight - margin) {
+        doc.addPage();
+        yPosition = margin;
+      }
+      
+      yPosition = addText(solution, margin, yPosition);
+      yPosition += 8;
+    });
+
+    // Generate PDF as blob
+    const pdfBlob = doc.output('blob');
+    const arrayBuffer = await pdfBlob.arrayBuffer();
+    const uint8Array = new Uint8Array(arrayBuffer);
+
+    // Send to main process to save
+    if (window.electronAPI && window.electronAPI.savePDF) {
+      const projectName = projectData?.projectName || 'solutions';
+      window.electronAPI.savePDF(uint8Array, `${projectName}_solutions.pdf`);
+    }
   };
 
   const updateNode = (nodeId, field, value) => {
@@ -701,12 +810,22 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         )
       )}
 
+      <ConfirmDeleteModal
+        isOpen={deleteConfirm.isOpen}
+        onConfirm={confirmDelete}
+        onCancel={cancelDelete}
+        message="Are you sure you want to delete this question? This will also delete all of its child questions. This action cannot be undone."
+      />
+
       <div className="top-controls">
         <button onClick={onBackToProjects} className="btn-back-to-projects">
           ← Back to Projects
         </button>
         <button onClick={onSaveProject} className="btn-save-project">
           💾 Save
+        </button>
+        <button onClick={printSolutions} className="btn-print-solutions">
+          📄 Print Solutions
         </button>
       </div>
 

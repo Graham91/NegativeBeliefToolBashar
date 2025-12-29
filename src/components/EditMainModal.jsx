@@ -17,6 +17,7 @@ const EditMainModal = ({ editingNode, closeEditModal, updateNode }) => {
             value={editingNode.QuestionInput || ''}
             onChange={(e) => updateNode(editingNode.ID, 'QuestionInput', e.target.value)}
             rows="4"
+            spellCheck={true}
           />
         </div>
         <div className="form-group">
@@ -47,6 +48,7 @@ const EditMainModal = ({ editingNode, closeEditModal, updateNode }) => {
             value={editingNode.solution || ''}
             onChange={(e) => updateNode(editingNode.ID, 'solution', e.target.value)}
             rows="4"
+            spellCheck={true}
           />
         </div>
 

@@ -94,6 +94,8 @@ body {
   color: #333;
   height: 250px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 #ResetButton{
   width: 60px;
@@ -113,7 +115,10 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 20px;
   min-height: 0;
+  max-height: 100%;
 }
 
 .node-label {
@@ -821,4 +826,87 @@ body {
   background: #4caf50;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-print-solutions {
+  padding: 10px 20px;
+  background: white;
+  border: 2px solid #9c27b0;
+  border-radius: 6px;
+  color: #9c27b0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-print-solutions:hover {
+  background: #9c27b0;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Confirm Delete Modal */
+.confirm-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  cursor: default !important;
+}
+
+.confirm-modal h2 {
+  margin-bottom: 20px;
+  color: #ff4757;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.confirm-message {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-confirm-cancel,
+.btn-confirm-delete {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-confirm-cancel {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-confirm-cancel:hover {
+  background: #d0d0d0;
+}
+
+.btn-confirm-delete {
+  background: #ff4757;
+  color: white;
+}
+
+.btn-confirm-delete:hover {
+  background: #ff3838;
+  box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
 }
