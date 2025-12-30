@@ -34,38 +34,38 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
   useEffect(() => {
     const positions = {};
     const layers = {}; // Track nodes at each depth level
-    
+
     // First pass: collect all visible nodes by layer
     const collectNodesByLayer = (node, depth = 0, parentId = null) => {
       if (!layers[depth]) {
         layers[depth] = [];
       }
-      
+
       layers[depth].push({
         id: node.ID,
         node: node,
         parentId: parentId
       });
-      
+
       if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
         node.children.forEach(child => {
           collectNodesByLayer(child, depth + 1, node.ID);
         });
       }
     };
-    
+
     if (projectData?.ProjectStructure?.MainQuestion) {
       collectNodesByLayer(projectData.ProjectStructure.MainQuestion);
     }
-    
+
     // Second pass: calculate positions layer by layer
     const horizontalSpacing = 230; // Space between siblings
     const verticalSpacing = 350; // Space between layers
-    
+
     Object.keys(layers).forEach(depth => {
       const layerNodes = layers[depth];
       const depthNum = parseInt(depth);
-      
+
       if (depthNum === 0) {
         // Main question at center
         positions[layerNodes[0].id] = { x: 0, y: 0, depth: 0 };
@@ -78,7 +78,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
           }
           nodesByParent[nodeInfo.parentId].push(nodeInfo);
         });
-        
+
         // Position each group under its parent, avoiding overlaps
         let currentX = 0;
         const sortedParentIds = Object.keys(nodesByParent).sort((a, b) => {
@@ -86,17 +86,17 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
           const posB = positions[b];
           return (posA?.x || 0) - (posB?.x || 0);
         });
-        
+
         const tempPositions = [];
-        
+
         sortedParentIds.forEach((parentId, parentIndex) => {
           const siblings = nodesByParent[parentId];
           const parentPos = positions[parentId];
-          
+
           if (parentPos) {
             const groupWidth = (siblings.length - 1) * horizontalSpacing;
             const groupStartX = parentPos.x - groupWidth / 2;
-            
+
             // Adjust if this would overlap with previous group
             if (parentIndex > 0) {
               const lastSiblingX = tempPositions[tempPositions.length - 1].x;
@@ -105,7 +105,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
             } else {
               currentX = groupStartX;
             }
-            
+
             siblings.forEach((nodeInfo, index) => {
               tempPositions.push({
                 id: nodeInfo.id,
@@ -116,7 +116,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
             });
           }
         });
-        
+
         // Find the midpoint of parent nodes that have visible children
         const parentsWithVisibleChildren = sortedParentIds.map(parentId => {
           const parent = layers[depthNum - 1].find(n => n.id === parentId);
@@ -126,7 +126,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
             hasVisibleChildren: parent.node.showChildren !== 'false' && parent.node.children && parent.node.children.length > 0
           };
         }).filter(p => p.hasVisibleChildren);
-        
+
         let centerPoint = 0;
         if (parentsWithVisibleChildren.length > 0) {
           const parentXPositions = parentsWithVisibleChildren.map(p => p.pos.x);
@@ -134,14 +134,14 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
           const maxParentX = Math.max(...parentXPositions);
           centerPoint = (minParentX + maxParentX) / 2;
         }
-        
+
         // Center the layer around the midpoint of parents with visible children
         if (tempPositions.length > 0) {
           const minX = Math.min(...tempPositions.map(p => p.x));
           const maxX = Math.max(...tempPositions.map(p => p.x));
           const layerMidpoint = (minX + maxX) / 2;
           const offset = centerPoint - layerMidpoint;
-          
+
           tempPositions.forEach(pos => {
             positions[pos.id] = {
               x: pos.x + offset,
@@ -152,7 +152,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         }
       }
     });
-    
+
     setNodePositions(positions);
   }, [projectData]);
 
@@ -167,7 +167,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
 
     const handleWheel = (e) => {
       e.preventDefault();
-      
+
       // Lower sensitivity (requires more scrolling)
       const sensitivity = e.deltaMode === 0 ? -0.0005 : -0.001; // DOM_DELTA_PIXEL vs DOM_DELTA_LINE
       accumulatedDelta += e.deltaY * sensitivity;
@@ -387,10 +387,10 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
     // Add date
     doc.setFontSize(10);
     doc.setFont(undefined, 'normal');
-    const currentDate = new Date().toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    const currentDate = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
     doc.text(`Generated: ${currentDate}`, margin, yPosition);
     yPosition += 15;
@@ -650,7 +650,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
   // Build a map of child ID to parent ID
   const buildParentMap = () => {
     const parentMap = {};
-    
+
     const mapNode = (node, parentId = null) => {
       if (parentId) {
         parentMap[node.ID] = parentId;
@@ -659,11 +659,11 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         node.children.forEach(child => mapNode(child, node.ID));
       }
     };
-    
+
     if (projectData?.ProjectStructure?.MainQuestion) {
       mapNode(projectData.ProjectStructure.MainQuestion);
     }
-    
+
     return parentMap;
   };
 
@@ -672,12 +672,12 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
     const parentMap = buildParentMap();
     const path = [];
     let currentId = nodeId;
-    
+
     while (parentMap[currentId]) {
       path.push(currentId);
       currentId = parentMap[currentId];
     }
-    
+
     return path;
   };
 
@@ -687,13 +687,13 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
 
   const renderLines = () => {
     const lineSegments = [];
-    
+
     // First pass: collect all line information
     const collectLines = (node) => {
       if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
         const parentPos = nodePositions[node.ID];
         const numChildren = node.children.length;
-        
+
         node.children.forEach((child, index) => {
           const childPos = nodePositions[child.ID];
           if (parentPos && childPos) {
@@ -702,13 +702,13 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
             const spacing = Math.min(nodeWidth / (numChildren + 1), 40);
             const startOffset = -(numChildren - 1) * spacing / 2;
             const parentStartX = parentPos.x + startOffset + (index * spacing);
-            
+
             // Calculate parent bottom based on node type (main nodes are auto-height, children are 250px)
             const parentNodeHeight = node.ID === projectData?.ProjectStructure?.MainQuestion?.ID ? 85 : 195;
             const parentBottom = parentPos.y + parentNodeHeight;
             const childTop = childPos.y;
             const idealMidY = parentBottom + (childTop - parentBottom) / 2;
-            
+
             lineSegments.push({
               nodeId: node.ID,
               childId: child.ID,
@@ -723,38 +723,38 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
             });
           }
         });
-        
+
         node.children.forEach(child => collectLines(child));
       }
     };
-    
+
     if (projectData?.ProjectStructure?.MainQuestion) {
       collectLines(projectData.ProjectStructure.MainQuestion);
     }
-    
+
     // Second pass: assign Y positions to avoid conflicts
-    
+
     // Configuration
     const lineSpacing = 16; // Minimum vertical distance between lines
     const padding = 30; // Minimum horizontal distance between line segments
-    
+
     // Storage for all placed segments
     const placedSegments = [];
-    
+
     // Sort segments: process by depth first, then by ideal Y position, then by direction (right first), then by position
     lineSegments.sort((a, b) => {
       if (a.depth !== b.depth) return a.depth - b.depth; // Higher levels first
       if (Math.abs(a.idealMidY - b.idealMidY) > 1) return a.idealMidY - b.idealMidY; // By Y position
-      
+
       // Process right-going lines before left-going lines
       const aGoesRight = a.childX > a.parentX;
       const bGoesRight = b.childX > b.parentX;
       if (aGoesRight !== bGoesRight) return aGoesRight ? -1 : 1;
-      
+
       // For lines going the same direction, sort by position
       return a.minX - b.minX;
     });
-    
+
     // Pre-calculate how many segments go in each direction at each ideal Y position
     const leftCountByY = {};
     const rightCountByY = {};
@@ -767,17 +767,17 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         leftCountByY[key] = (leftCountByY[key] || 0) + 1;
       }
     });
-    
+
     // Track how many segments we've processed at each Y
     const leftProcessedByY = {};
     const rightProcessedByY = {};
-    
+
     // Process each segment
     const assignedSegments = lineSegments.map(segment => {
       // Determine if this line goes right or left
       const goesRight = segment.childX > segment.parentX;
       const key = `${segment.depth}-${Math.round(segment.idealMidY)}`;
-      
+
       // Pre-offset based on how many lines go in the same direction at this Y
       let testY = segment.idealMidY;
       if (goesRight) {
@@ -793,32 +793,32 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         testY = segment.idealMidY + (processedLeft * lineSpacing);
         leftProcessedByY[key] = processedLeft + 1;
       }
-      
+
       let foundPosition = false;
       let attempts = 0;
       const maxAttempts = 200;
-      
+
       // Keep trying Y positions until we find one that doesn't conflict
       while (!foundPosition && attempts < maxAttempts) {
         let hasConflict = false;
-        
+
         // Check this Y position against all previously placed segments
         for (const placed of placedSegments) {
           // Are the Y positions too close? (use < for strict spacing)
           const yTooClose = Math.abs(placed.actualMidY - testY) < lineSpacing;
-          
+
           if (yTooClose) {
             // Do the X ranges overlap (with padding)?
-            const xOverlaps = !(segment.maxX + padding < placed.minX || 
-                               segment.minX - padding > placed.maxX);
-            
+            const xOverlaps = !(segment.maxX + padding < placed.minX ||
+              segment.minX - padding > placed.maxX);
+
             if (xOverlaps) {
               hasConflict = true;
               break; // Found a conflict, no need to check more
             }
           }
         }
-        
+
         if (hasConflict) {
           // This Y position doesn't work, try the next one
           if (goesRight) {
@@ -834,41 +834,41 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
           foundPosition = true;
         }
       }
-      
+
       // Create the final segment with its assigned Y position
       const finalSegment = {
         ...segment,
         actualMidY: testY,
         direction: goesRight ? 'right' : 'left'
       };
-      
+
       // Add to our list of placed segments
       placedSegments.push(finalSegment);
-      
+
       return finalSegment;
     });
-    
+
     // Store for debugging
     window.debugLineSegments = assignedSegments;
-    
+
     // Get ancestor path for highlighting
     const ancestorPath = selectedNode ? getAncestorPath(selectedNode) : [];
-    
+
     // Third pass: create the actual path elements
     return assignedSegments.map(seg => {
       // Check if child is directly below parent (X ranges overlap significantly)
       const childCenterX = seg.childX;
       const parentConnectionX = seg.parentX;
-      
+
       // If the parent connection point is within the child node's bounds, draw straight down
       const childNodeWidth = 200; // Approximate child node width
       const childLeftEdge = childCenterX - childNodeWidth / 2;
       const childRightEdge = childCenterX + childNodeWidth / 2;
       const isDirectlyBelow = parentConnectionX >= childLeftEdge && parentConnectionX <= childRightEdge;
-      
+
       // Check if this line is part of the selected path
       const isHighlighted = ancestorPath.includes(seg.childId);
-      
+
       let pathData;
       if (isDirectlyBelow) {
         // Draw straight down from parent to child at the parent's X position
@@ -885,7 +885,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
           `L ${seg.childX} ${seg.childTop}`
         ].join(' ');
       }
-      
+
       return (
         <path
           key={`line-${seg.nodeId}-${seg.childId}`}
@@ -903,7 +903,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
 
   const renderNode = (node, isMain = false) => {
     const pos = nodePositions[node.ID];
-    
+
     if (isMain) {
       return (
         <MainQuestion
@@ -933,26 +933,26 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
 
   const renderNodes = () => {
     const nodes = [];
-    
+
     const collectNodes = (node, isMain = false) => {
       nodes.push(renderNode(node, isMain));
-      
+
       if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
         node.children.forEach((child) => {
           collectNodes(child, false);
         });
       }
     };
-    
+
     if (projectData?.ProjectStructure?.MainQuestion) {
       collectNodes(projectData.ProjectStructure.MainQuestion, true);
     }
-    
+
     return nodes;
   };
 
   return (
-    <div 
+    <div
       className="tree-container"
       ref={containerRef}
       onMouseDown={handleMouseDown}
@@ -960,7 +960,8 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
-      <div 
+
+      <div
         className="tree-canvas"
         style={{
           transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
@@ -976,13 +977,13 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
 
       {editingNode && (
         editingNode.ID.startsWith('main') ? (
-          <EditMainModal 
+          <EditMainModal
             editingNode={editingNode}
             closeEditModal={closeEditModal}
             updateNode={updateNode}
           />
         ) : (
-          <EditChildModal 
+          <EditChildModal
             editingNode={editingNode}
             closeEditModal={closeEditModal}
             updateNode={updateNode}
