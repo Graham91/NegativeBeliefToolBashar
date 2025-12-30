@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import TreeView from './components/TreeView';
 import ProjectManager from './components/ProjectManager';
+import SolutionPreview from './components/SolutionPreview';
 import './App.css';
 
 const App = () => {
-  const [currentView, setCurrentView] = useState('projects'); // 'projects' or 'tree'
+  const [currentView, setCurrentView] = useState('projects'); // 'projects', 'tree', or 'preview'
+  const [activeTab, setActiveTab] = useState('tree'); // 'tree' or 'preview'
   const [currentProjectId, setCurrentProjectId] = useState(null);
   const [projectData, setProjectData] = useState({
     projectName: 'New Project',
@@ -37,6 +39,7 @@ const App = () => {
       setProjectData(data.projectData);
       setCurrentProjectId(data.projectId);
       setCurrentView('tree');
+      setActiveTab('tree');
     };
 
     // Listen for save requests
@@ -83,6 +86,7 @@ const App = () => {
   }, []);
 
   const handleSelectProject = useCallback((projectId) => {
+    setActiveTab('tree');
     window.electronAPI.loadProject(projectId);
   }, []);
 
@@ -100,6 +104,7 @@ const App = () => {
     }
     setCurrentView('projects');
     setCurrentProjectId(null);
+    setActiveTab('tree'); // Ensure tab resets to TreeView
   }, [currentProjectId]);
 
   return (
@@ -107,12 +112,40 @@ const App = () => {
       {currentView === 'projects' ? (
         <ProjectManager onSelectProject={handleSelectProject} />
       ) : (
-        <TreeView 
-          projectData={projectData} 
-          updateProjectData={updateProjectData}
-          onBackToProjects={handleBackToProjects}
-          onSaveProject={handleSaveProject}
-        />
+        <>
+          <div className="tab-bar">
+            <button
+              className={activeTab === 'tree' ? 'tab active' : 'tab'}
+              onClick={() => {
+                // console.log('Switching to Tree View');
+                setActiveTab('tree');
+              }}
+            >
+              Tree View
+            </button>
+            <button
+              className={activeTab === 'preview' ? 'tab active' : 'tab'}
+              onClick={() => {
+                // console.log('Switching to Solution Preview');
+                setActiveTab('preview');
+              }}
+            >
+              Solution Preview
+            </button>
+          </div>
+
+          {activeTab === 'tree' ? (
+            <TreeView
+              projectData={projectData}
+              updateProjectData={updateProjectData}
+              onBackToProjects={handleBackToProjects}
+              onSaveProject={handleSaveProject}
+            />
+          ) : (
+            <SolutionPreview projectData={projectData} />
+          )}
+
+        </>
       )}
     </div>
   );
