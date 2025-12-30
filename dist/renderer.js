@@ -17082,7 +17082,36 @@ body {
   background: #ff3838;
   box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
 }
-`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\r\n  overflow: hidden;\r\n}\r\n\r\n.app {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n}\r\n\r\n.tree-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  overflow: hidden;\r\n  background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%);\r\n  cursor: grab;\r\n}\r\n\r\n.tree-container:active {\r\n  cursor: grabbing;\r\n}\r\n\r\n.tree-canvas {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  transform-origin: 0 0;\r\n  will-change: transform;\r\n  transition: transform 0.1s ease-out;\r\n}\r\n\r\n.connection-lines {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  pointer-events: none;\r\n  overflow: visible;\r\n  z-index: 1;\r\n}\r\n\r\n.nodes-layer {\r\n  position: relative;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  z-index: 2;\r\n}\r\n\r\n.node {\r\n  position: absolute;\r\n  background: white;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  padding: 10px 5px 5px 5px;\r\n  width: 200px;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  border: 2px solid transparent;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node:hover {\r\n  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transform: translate(-50%, -2px);\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.main-node {\r\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n  color: white;\r\n  width: 200px;\r\n  max-height: 250px;\r\n  border: 3px solid #ffd700;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.main-node:hover {\r\n  border-color: #ffd700;\r\n}\r\n\r\n.child-node {\r\n  background: white;\r\n  color: #333;\r\n  height: 250px;\r\n  position: relative;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n#ResetButton{\r\n  width: 60px;\r\n}\r\n.node.inactive {\r\n  opacity: 0.5;\r\n  background: #e0e0e0;\r\n  color: #999;\r\n}\r\n\r\n.node.inactive:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.node-content {\r\n  flex: 1;\r\n  overflow-y: auto;\r\n  overflow-x: hidden;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  padding-bottom: 20px;\r\n  min-height: 0;\r\n  max-height: 100%;\r\n}\r\n\r\n.node-label {\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n  text-transform: uppercase;\r\n  letter-spacing: 0.5px;\r\n  margin-bottom: 8px;\r\n  opacity: 0.8;\r\n}\r\n\r\n.main-node .node-label {\r\n  color: #ffd700;\r\n}\r\n\r\n.child-node .node-label {\r\n  color: #4a90e2;\r\n}\r\n\r\n.node-preview {\r\n  font-size: 13px;\r\n  line-height: 1.4;\r\n  margin-bottom: 5px;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node-preview strong {\r\n  font-weight: 600;\r\n  color: #4a90e2;\r\n}\r\n\r\n.main-node .node-preview {\r\n  color: white;\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n}\r\n\r\n.node-solution-preview {\r\n  font-size: 11px;\r\n  font-style: italic;\r\n  opacity: 0.9;\r\n  margin-top: 5px;\r\n  padding-top: 5px;\r\n  border-top: 1px solid rgba(0, 0, 0, 0.1);\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n\r\n.main-node .node-solution-preview {\r\n  border-top-color: rgba(255, 255, 255, 0.3);\r\n  color: #ffd700;\r\n}\r\n\r\n.node-actions {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.node-actions-bottom {\r\n  position: absolute;\r\n  bottom: -15px;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n  display: flex;\r\n  gap: 15px;\r\n  z-index: 5;\r\n}\r\n\r\n.btn-add-circle,\r\n.btn-toggle-circle {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #4a90e2;\r\n  background: white;\r\n  color: #4a90e2;\r\n  font-size: 20px;\r\n  font-weight: bold;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-add-circle:hover,\r\n.btn-toggle-circle:hover {\r\n  background: #4a90e2;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle-circle.inactive {\r\n  border-color: #ff6b6b;\r\n  color: #ff6b6b;\r\n}\r\n\r\n.btn-toggle-circle.inactive:hover {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.node-actions button {\r\n  flex: 1;\r\n  min-width: 80px;\r\n  padding: 6px 10px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 11px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.btn-add {\r\n  background: #4a90e2;\r\n  color: white;\r\n}\r\n\r\n.btn-add:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.main-node .btn-add {\r\n  background: #ffd700;\r\n  color: #333;\r\n}\r\n\r\n.main-node .btn-add:hover {\r\n  background: #ffed4e;\r\n}\r\n\r\n.btn-toggle {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.btn-delete {\r\n  position: absolute;\r\n  top: -15px;\r\n  right: 20px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #ff4757;\r\n  background: white;\r\n  color: #ff4757;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  z-index: 10;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-delete:hover {\r\n  background: #ff4757;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle:hover {\r\n  background: #d0d0d0;\r\n}\r\n\r\n.btn-toggle.inactive {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-toggle.inactive:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.zoom-controls {\r\n  position: fixed;\r\n  bottom: 20px;\r\n  right: 20px;\r\n  display: flex;\r\n  gap: 10px;\r\n  align-items: center;\r\n  background: white;\r\n  padding: 10px 15px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  z-index: 1000;\r\n}\r\n\r\n.zoom-controls button {\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n}\r\n\r\n.zoom-controls button:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.zoom-controls span {\r\n  min-width: 50px;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  color: #333;\r\n}\r\n\r\n.edit-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  z-index: 2000;\r\n  backdrop-filter: blur(5px);\r\n}\r\n\r\n.edit-modal {\r\n  background: white;\r\n  border-radius: 12px;\r\n  padding: 30px;\r\n  max-width: 600px;\r\n  width: 90%;\r\n  max-height: 80vh;\r\n  overflow-y: auto;\r\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\r\n  position: relative;\r\n  cursor: default !important;\r\n}\r\n.edit-modal h2 {\r\n  margin-bottom: 25px;\r\n  color: #333;\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n}\r\n\r\n.close-modal {\r\n  position: absolute;\r\n  top: 15px;\r\n  right: 15px;\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  background: #f0f0f0;\r\n  border-radius: 50%;\r\n  font-size: 24px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: #666;\r\n}\r\n\r\n.close-modal:hover {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.form-group {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.form-group label {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n  font-weight: 600;\r\n  color: #333;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-icon {\r\n  margin-left: 8px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  opacity: 0.6;\r\n  transition: opacity 0.2s ease;\r\n}\r\n\r\n.help-icon:hover {\r\n  opacity: 1;\r\n}\r\n\r\n.help-section {\r\n  background: #f0f7ff;\r\n  border-left: 4px solid #4a90e2;\r\n  padding: 12px 16px;\r\n  margin-bottom: 12px;\r\n  border-radius: 4px;\r\n  animation: slideDown 0.3s ease;\r\n}\r\n\r\n.help-section h4 {\r\n  margin: 0 0 8px 0;\r\n  color: #4a90e2;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-section ul {\r\n  margin: 0;\r\n  padding-left: 20px;\r\n}\r\n\r\n.help-section li {\r\n  margin-bottom: 6px;\r\n  font-size: 13px;\r\n  color: #555;\r\n}\r\n\r\n@keyframes slideDown {\r\n  from {\r\n    opacity: 0;\r\n    max-height: 0;\r\n  }\r\n  to {\r\n    opacity: 1;\r\n    max-height: 300px;\r\n  }\r\n}\r\n\r\n.form-group textarea {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-family: inherit;\r\n  resize: vertical;\r\n  transition: border-color 0.2s ease;\r\n  color: black;\r\n  caret-color: black;\r\n}\r\n.form-group textarea:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-close-modal {\r\n  width: 100%;\r\n  padding: 12px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-close-modal:hover {\r\n  background: #357abd;\r\n}\r\n\r\n/* Scrollbar styling for modal */\r\n.edit-modal::-webkit-scrollbar {\r\n  width: 8px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-track {\r\n  background: #f0f0f0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb {\r\n  background: #c0c0c0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb:hover {\r\n  background: #a0a0a0;\r\n}\r\n\r\n/* Inline editable text styles */\r\n.inline-edit-paragraph {\r\n  line-height: 1.6;\r\n  font-size: 14px;\r\n  color: #333;\r\n  padding: 12px;\r\n  background: #f8f9fa;\r\n  border-radius: 6px;\r\n  border: 2px solid #e0e0e0;\r\n  cursor: default;\r\n}\r\n\r\n.inline-edit-paragraph strong {\r\n  cursor: default;\r\n}\r\n\r\n\r\n.inline-input {\r\n  border: 1px solid #ccc;\r\n  font-family: inherit;\r\n  font-size: inherit;\r\n  padding: 2px 6px;\r\n  background: white;\r\n  border-radius: 3px;\r\n  min-width: 20px;\r\n  display: inline;\r\n  outline: none;\r\n  transition: border-color 0.2s ease;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n  color: black;\r\n  user-select: text;\r\n  -webkit-user-select: text;\r\n  -moz-user-select: text;\r\n  -ms-user-select: text;\r\n  caret-color: black;\r\n}\r\n\r\n.inline-input:focus {\r\n  border-color: #4a90e2;\r\n  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);\r\n}\r\n\r\n.inline-input:empty::before {\r\n  content: \"...\";\r\n  color: #999;\r\n}\r\n\r\n/* Project Manager Styles */\r\n.project-manager {\r\n  padding: 40px;\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  background: #f5f5f5;\r\n  min-height: 100vh;\r\n}\r\n\r\n.project-manager-header {\r\n  text-align: center;\r\n  margin-bottom: 40px;\r\n}\r\n\r\n.project-manager-header h1 {\r\n  font-size: 36px;\r\n  color: #333;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.project-manager-header p {\r\n  font-size: 16px;\r\n  color: #666;\r\n}\r\n\r\n.create-project-section {\r\n  background: white;\r\n  padding: 30px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 40px;\r\n}\r\n\r\n.create-project-section h2 {\r\n  font-size: 20px;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n.create-project-form {\r\n  display: flex;\r\n  gap: 12px;\r\n}\r\n\r\n.create-project-form input {\r\n  flex: 1;\r\n  padding: 12px 16px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  transition: border-color 0.2s;\r\n}\r\n\r\n.create-project-form input:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-create-project {\r\n  padding: 12px 24px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s;\r\n}\r\n\r\n.btn-create-project:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.projects-list-section {\r\n  background: white;\r\n  padding: 30px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.projects-list-section h2 {\r\n  font-size: 20px;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n.no-projects {\r\n  text-align: center;\r\n  color: #999;\r\n  padding: 40px;\r\n  font-size: 14px;\r\n}\r\n\r\n.projects-grid {\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\r\n  gap: 20px;\r\n}\r\n\r\n.project-card {\r\n  background: #f9f9f9;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  transition: all 0.2s;\r\n}\r\n\r\n.project-card:hover {\r\n  border-color: #4a90e2;\r\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.project-info h3 {\r\n  font-size: 18px;\r\n  color: #333;\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.project-meta {\r\n  font-size: 12px;\r\n  color: #999;\r\n  margin-bottom: 16px;\r\n}\r\n\r\n.project-actions {\r\n  display: flex;\r\n  gap: 8px;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.project-actions button {\r\n  padding: 8px 16px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 13px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n}\r\n\r\n.btn-open-project {\r\n  background: #4a90e2;\r\n  color: white;\r\n  flex: 1;\r\n}\r\n\r\n.btn-open-project:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.btn-edit-project {\r\n  background: #f0f0f0;\r\n  color: #333;\r\n}\r\n\r\n.btn-edit-project:hover {\r\n  background: #e0e0e0;\r\n}\r\n\r\n.btn-delete-project {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-delete-project:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.project-edit-mode {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 12px;\r\n}\r\n\r\n.project-edit-mode input {\r\n  padding: 10px;\r\n  border: 2px solid #4a90e2;\r\n  border-radius: 4px;\r\n  font-size: 16px;\r\n}\r\n\r\n.edit-actions {\r\n  display: flex;\r\n  gap: 8px;\r\n}\r\n\r\n.edit-actions button {\r\n  flex: 1;\r\n  padding: 8px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  transition: background 0.2s;\r\n}\r\n\r\n.edit-actions button:first-child {\r\n  background: #4caf50;\r\n  color: white;\r\n}\r\n\r\n.edit-actions button:first-child:hover {\r\n  background: #45a049;\r\n}\r\n\r\n.edit-actions button:last-child {\r\n  background: #f44336;\r\n  color: white;\r\n}\r\n\r\n.edit-actions button:last-child:hover {\r\n  background: #da190b;\r\n}\r\n\r\n/* Back to Projects Button */\r\n.top-controls {\r\n  position: fixed;\r\n  top: 20px;\r\n  left: 20px;\r\n  z-index: 1000;\r\n  display: flex;\r\n  gap: 10px;\r\n}\r\n\r\n.btn-back-to-projects {\r\n  padding: 10px 20px;\r\n  background: white;\r\n  border: 2px solid #4a90e2;\r\n  border-radius: 6px;\r\n  color: #4a90e2;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.btn-back-to-projects:hover {\r\n  background: #4a90e2;\r\n  color: white;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.btn-save-project {\r\n  padding: 10px 20px;\r\n  background: white;\r\n  border: 2px solid #4caf50;\r\n  border-radius: 6px;\r\n  color: #4caf50;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.btn-save-project:hover {\r\n  background: #4caf50;\r\n  color: white;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.btn-print-solutions {\r\n  padding: 10px 20px;\r\n  background: white;\r\n  border: 2px solid #9c27b0;\r\n  border-radius: 6px;\r\n  color: #9c27b0;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.btn-print-solutions:hover {\r\n  background: #9c27b0;\r\n  color: white;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Confirm Delete Modal */\r\n.confirm-modal {\r\n  background: white;\r\n  border-radius: 12px;\r\n  padding: 30px;\r\n  max-width: 450px;\r\n  width: 90%;\r\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\r\n  position: relative;\r\n  cursor: default !important;\r\n}\r\n\r\n.confirm-modal h2 {\r\n  margin-bottom: 20px;\r\n  color: #ff4757;\r\n  font-size: 22px;\r\n  font-weight: 700;\r\n  text-align: center;\r\n}\r\n\r\n.confirm-message {\r\n  font-size: 15px;\r\n  color: #333;\r\n  line-height: 1.6;\r\n  margin-bottom: 25px;\r\n  text-align: center;\r\n}\r\n\r\n.confirm-actions {\r\n  display: flex;\r\n  gap: 12px;\r\n}\r\n\r\n.btn-confirm-cancel,\r\n.btn-confirm-delete {\r\n  flex: 1;\r\n  padding: 12px 20px;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 15px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.btn-confirm-cancel {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.btn-confirm-cancel:hover {\r\n  background: #d0d0d0;\r\n}\r\n\r\n.btn-confirm-delete {\r\n  background: #ff4757;\r\n  color: white;\r\n}\r\n\r\n.btn-confirm-delete:hover {\r\n  background: #ff3838;\r\n  box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);\r\n}\r\n"],"sourceRoot":""}]);
+
+/* Tree Navigator */
+.tree-navigator {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.navigator-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tree-navigator canvas {
+  display: block;
+  border-radius: 4px;
+  background: #f5f5f5;
+}
+`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"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","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\r\n  overflow: hidden;\r\n}\r\n\r\n.app {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n}\r\n\r\n.tree-container {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  overflow: hidden;\r\n  background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%);\r\n  cursor: grab;\r\n}\r\n\r\n.tree-container:active {\r\n  cursor: grabbing;\r\n}\r\n\r\n.tree-canvas {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  transform-origin: 0 0;\r\n  will-change: transform;\r\n  transition: transform 0.1s ease-out;\r\n}\r\n\r\n.connection-lines {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  pointer-events: none;\r\n  overflow: visible;\r\n  z-index: 1;\r\n}\r\n\r\n.nodes-layer {\r\n  position: relative;\r\n  width: 10000px;\r\n  height: 10000px;\r\n  z-index: 2;\r\n}\r\n\r\n.node {\r\n  position: absolute;\r\n  background: white;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  padding: 10px 5px 5px 5px;\r\n  width: 200px;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  border: 2px solid transparent;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node:hover {\r\n  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  transform: translate(-50%, -2px);\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.main-node {\r\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n  color: white;\r\n  width: 200px;\r\n  max-height: 250px;\r\n  border: 3px solid #ffd700;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.main-node:hover {\r\n  border-color: #ffd700;\r\n}\r\n\r\n.child-node {\r\n  background: white;\r\n  color: #333;\r\n  height: 250px;\r\n  position: relative;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n#ResetButton{\r\n  width: 60px;\r\n}\r\n.node.inactive {\r\n  opacity: 0.5;\r\n  background: #e0e0e0;\r\n  color: #999;\r\n}\r\n\r\n.node.inactive:hover {\r\n  opacity: 0.7;\r\n}\r\n\r\n.node-content {\r\n  flex: 1;\r\n  overflow-y: auto;\r\n  overflow-x: hidden;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  padding-bottom: 20px;\r\n  min-height: 0;\r\n  max-height: 100%;\r\n}\r\n\r\n.node-label {\r\n  font-size: 11px;\r\n  font-weight: 700;\r\n  text-transform: uppercase;\r\n  letter-spacing: 0.5px;\r\n  margin-bottom: 8px;\r\n  opacity: 0.8;\r\n}\r\n\r\n.main-node .node-label {\r\n  color: #ffd700;\r\n}\r\n\r\n.child-node .node-label {\r\n  color: #4a90e2;\r\n}\r\n\r\n.node-preview {\r\n  font-size: 13px;\r\n  line-height: 1.4;\r\n  margin-bottom: 5px;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n}\r\n\r\n.node-preview strong {\r\n  font-weight: 600;\r\n  color: #4a90e2;\r\n}\r\n\r\n.main-node .node-preview {\r\n  color: white;\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n}\r\n\r\n.node-solution-preview {\r\n  font-size: 11px;\r\n  font-style: italic;\r\n  opacity: 0.9;\r\n  margin-top: 5px;\r\n  padding-top: 5px;\r\n  border-top: 1px solid rgba(0, 0, 0, 0.1);\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n\r\n.main-node .node-solution-preview {\r\n  border-top-color: rgba(255, 255, 255, 0.3);\r\n  color: #ffd700;\r\n}\r\n\r\n.node-actions {\r\n  display: flex;\r\n  gap: 5px;\r\n  flex-wrap: wrap;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.node-actions-bottom {\r\n  position: absolute;\r\n  bottom: -15px;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n  display: flex;\r\n  gap: 15px;\r\n  z-index: 5;\r\n}\r\n\r\n.btn-add-circle,\r\n.btn-toggle-circle {\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #4a90e2;\r\n  background: white;\r\n  color: #4a90e2;\r\n  font-size: 20px;\r\n  font-weight: bold;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-add-circle:hover,\r\n.btn-toggle-circle:hover {\r\n  background: #4a90e2;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle-circle.inactive {\r\n  border-color: #ff6b6b;\r\n  color: #ff6b6b;\r\n}\r\n\r\n.btn-toggle-circle.inactive:hover {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.node-actions button {\r\n  flex: 1;\r\n  min-width: 80px;\r\n  padding: 6px 10px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 11px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.btn-add {\r\n  background: #4a90e2;\r\n  color: white;\r\n}\r\n\r\n.btn-add:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.main-node .btn-add {\r\n  background: #ffd700;\r\n  color: #333;\r\n}\r\n\r\n.main-node .btn-add:hover {\r\n  background: #ffed4e;\r\n}\r\n\r\n.btn-toggle {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.btn-delete {\r\n  position: absolute;\r\n  top: -15px;\r\n  right: 20px;\r\n  width: 30px;\r\n  height: 30px;\r\n  border-radius: 50%;\r\n  border: 2px solid #ff4757;\r\n  background: white;\r\n  color: #ff4757;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 0;\r\n  transition: all 0.2s ease;\r\n  z-index: 10;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-delete:hover {\r\n  background: #ff4757;\r\n  color: white;\r\n  transform: scale(1.1);\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.btn-toggle:hover {\r\n  background: #d0d0d0;\r\n}\r\n\r\n.btn-toggle.inactive {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-toggle.inactive:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.zoom-controls {\r\n  position: fixed;\r\n  bottom: 20px;\r\n  right: 20px;\r\n  display: flex;\r\n  gap: 10px;\r\n  align-items: center;\r\n  background: white;\r\n  padding: 10px 15px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\r\n  z-index: 1000;\r\n}\r\n\r\n.zoom-controls button {\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n}\r\n\r\n.zoom-controls button:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.zoom-controls span {\r\n  min-width: 50px;\r\n  text-align: center;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  color: #333;\r\n}\r\n\r\n.edit-modal-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  z-index: 2000;\r\n  backdrop-filter: blur(5px);\r\n}\r\n\r\n.edit-modal {\r\n  background: white;\r\n  border-radius: 12px;\r\n  padding: 30px;\r\n  max-width: 600px;\r\n  width: 90%;\r\n  max-height: 80vh;\r\n  overflow-y: auto;\r\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\r\n  position: relative;\r\n  cursor: default !important;\r\n}\r\n.edit-modal h2 {\r\n  margin-bottom: 25px;\r\n  color: #333;\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n}\r\n\r\n.close-modal {\r\n  position: absolute;\r\n  top: 15px;\r\n  right: 15px;\r\n  width: 32px;\r\n  height: 32px;\r\n  border: none;\r\n  background: #f0f0f0;\r\n  border-radius: 50%;\r\n  font-size: 24px;\r\n  line-height: 1;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  color: #666;\r\n}\r\n\r\n.close-modal:hover {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.form-group {\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.form-group label {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n  font-weight: 600;\r\n  color: #333;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-icon {\r\n  margin-left: 8px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  opacity: 0.6;\r\n  transition: opacity 0.2s ease;\r\n}\r\n\r\n.help-icon:hover {\r\n  opacity: 1;\r\n}\r\n\r\n.help-section {\r\n  background: #f0f7ff;\r\n  border-left: 4px solid #4a90e2;\r\n  padding: 12px 16px;\r\n  margin-bottom: 12px;\r\n  border-radius: 4px;\r\n  animation: slideDown 0.3s ease;\r\n}\r\n\r\n.help-section h4 {\r\n  margin: 0 0 8px 0;\r\n  color: #4a90e2;\r\n  font-size: 14px;\r\n}\r\n\r\n.help-section ul {\r\n  margin: 0;\r\n  padding-left: 20px;\r\n}\r\n\r\n.help-section li {\r\n  margin-bottom: 6px;\r\n  font-size: 13px;\r\n  color: #555;\r\n}\r\n\r\n@keyframes slideDown {\r\n  from {\r\n    opacity: 0;\r\n    max-height: 0;\r\n  }\r\n  to {\r\n    opacity: 1;\r\n    max-height: 300px;\r\n  }\r\n}\r\n\r\n.form-group textarea {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-family: inherit;\r\n  resize: vertical;\r\n  transition: border-color 0.2s ease;\r\n  color: black;\r\n  caret-color: black;\r\n}\r\n.form-group textarea:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-close-modal {\r\n  width: 100%;\r\n  padding: 12px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s ease;\r\n  margin-top: 10px;\r\n}\r\n\r\n.btn-close-modal:hover {\r\n  background: #357abd;\r\n}\r\n\r\n/* Scrollbar styling for modal */\r\n.edit-modal::-webkit-scrollbar {\r\n  width: 8px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-track {\r\n  background: #f0f0f0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb {\r\n  background: #c0c0c0;\r\n  border-radius: 4px;\r\n}\r\n\r\n.edit-modal::-webkit-scrollbar-thumb:hover {\r\n  background: #a0a0a0;\r\n}\r\n\r\n/* Inline editable text styles */\r\n.inline-edit-paragraph {\r\n  line-height: 1.6;\r\n  font-size: 14px;\r\n  color: #333;\r\n  padding: 12px;\r\n  background: #f8f9fa;\r\n  border-radius: 6px;\r\n  border: 2px solid #e0e0e0;\r\n  cursor: default;\r\n}\r\n\r\n.inline-edit-paragraph strong {\r\n  cursor: default;\r\n}\r\n\r\n\r\n.inline-input {\r\n  border: 1px solid #ccc;\r\n  font-family: inherit;\r\n  font-size: inherit;\r\n  padding: 2px 6px;\r\n  background: white;\r\n  border-radius: 3px;\r\n  min-width: 20px;\r\n  display: inline;\r\n  outline: none;\r\n  transition: border-color 0.2s ease;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n  color: black;\r\n  user-select: text;\r\n  -webkit-user-select: text;\r\n  -moz-user-select: text;\r\n  -ms-user-select: text;\r\n  caret-color: black;\r\n}\r\n\r\n.inline-input:focus {\r\n  border-color: #4a90e2;\r\n  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);\r\n}\r\n\r\n.inline-input:empty::before {\r\n  content: \"...\";\r\n  color: #999;\r\n}\r\n\r\n/* Project Manager Styles */\r\n.project-manager {\r\n  padding: 40px;\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  background: #f5f5f5;\r\n  min-height: 100vh;\r\n}\r\n\r\n.project-manager-header {\r\n  text-align: center;\r\n  margin-bottom: 40px;\r\n}\r\n\r\n.project-manager-header h1 {\r\n  font-size: 36px;\r\n  color: #333;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.project-manager-header p {\r\n  font-size: 16px;\r\n  color: #666;\r\n}\r\n\r\n.create-project-section {\r\n  background: white;\r\n  padding: 30px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  margin-bottom: 40px;\r\n}\r\n\r\n.create-project-section h2 {\r\n  font-size: 20px;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n.create-project-form {\r\n  display: flex;\r\n  gap: 12px;\r\n}\r\n\r\n.create-project-form input {\r\n  flex: 1;\r\n  padding: 12px 16px;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  transition: border-color 0.2s;\r\n}\r\n\r\n.create-project-form input:focus {\r\n  outline: none;\r\n  border-color: #4a90e2;\r\n}\r\n\r\n.btn-create-project {\r\n  padding: 12px 24px;\r\n  background: #4a90e2;\r\n  color: white;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: background 0.2s;\r\n}\r\n\r\n.btn-create-project:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.projects-list-section {\r\n  background: white;\r\n  padding: 30px;\r\n  border-radius: 8px;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.projects-list-section h2 {\r\n  font-size: 20px;\r\n  margin-bottom: 20px;\r\n  color: #333;\r\n}\r\n\r\n.no-projects {\r\n  text-align: center;\r\n  color: #999;\r\n  padding: 40px;\r\n  font-size: 14px;\r\n}\r\n\r\n.projects-grid {\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\r\n  gap: 20px;\r\n}\r\n\r\n.project-card {\r\n  background: #f9f9f9;\r\n  border: 2px solid #e0e0e0;\r\n  border-radius: 8px;\r\n  padding: 20px;\r\n  transition: all 0.2s;\r\n}\r\n\r\n.project-card:hover {\r\n  border-color: #4a90e2;\r\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.project-info h3 {\r\n  font-size: 18px;\r\n  color: #333;\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.project-meta {\r\n  font-size: 12px;\r\n  color: #999;\r\n  margin-bottom: 16px;\r\n}\r\n\r\n.project-actions {\r\n  display: flex;\r\n  gap: 8px;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.project-actions button {\r\n  padding: 8px 16px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 13px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n}\r\n\r\n.btn-open-project {\r\n  background: #4a90e2;\r\n  color: white;\r\n  flex: 1;\r\n}\r\n\r\n.btn-open-project:hover {\r\n  background: #357abd;\r\n}\r\n\r\n.btn-edit-project {\r\n  background: #f0f0f0;\r\n  color: #333;\r\n}\r\n\r\n.btn-edit-project:hover {\r\n  background: #e0e0e0;\r\n}\r\n\r\n.btn-delete-project {\r\n  background: #ff6b6b;\r\n  color: white;\r\n}\r\n\r\n.btn-delete-project:hover {\r\n  background: #ff5252;\r\n}\r\n\r\n.project-edit-mode {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 12px;\r\n}\r\n\r\n.project-edit-mode input {\r\n  padding: 10px;\r\n  border: 2px solid #4a90e2;\r\n  border-radius: 4px;\r\n  font-size: 16px;\r\n}\r\n\r\n.edit-actions {\r\n  display: flex;\r\n  gap: 8px;\r\n}\r\n\r\n.edit-actions button {\r\n  flex: 1;\r\n  padding: 8px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n  transition: background 0.2s;\r\n}\r\n\r\n.edit-actions button:first-child {\r\n  background: #4caf50;\r\n  color: white;\r\n}\r\n\r\n.edit-actions button:first-child:hover {\r\n  background: #45a049;\r\n}\r\n\r\n.edit-actions button:last-child {\r\n  background: #f44336;\r\n  color: white;\r\n}\r\n\r\n.edit-actions button:last-child:hover {\r\n  background: #da190b;\r\n}\r\n\r\n/* Back to Projects Button */\r\n.top-controls {\r\n  position: fixed;\r\n  top: 20px;\r\n  left: 20px;\r\n  z-index: 1000;\r\n  display: flex;\r\n  gap: 10px;\r\n}\r\n\r\n.btn-back-to-projects {\r\n  padding: 10px 20px;\r\n  background: white;\r\n  border: 2px solid #4a90e2;\r\n  border-radius: 6px;\r\n  color: #4a90e2;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.btn-back-to-projects:hover {\r\n  background: #4a90e2;\r\n  color: white;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.btn-save-project {\r\n  padding: 10px 20px;\r\n  background: white;\r\n  border: 2px solid #4caf50;\r\n  border-radius: 6px;\r\n  color: #4caf50;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.btn-save-project:hover {\r\n  background: #4caf50;\r\n  color: white;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.btn-print-solutions {\r\n  padding: 10px 20px;\r\n  background: white;\r\n  border: 2px solid #9c27b0;\r\n  border-radius: 6px;\r\n  color: #9c27b0;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s;\r\n  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n.btn-print-solutions:hover {\r\n  background: #9c27b0;\r\n  color: white;\r\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n/* Confirm Delete Modal */\r\n.confirm-modal {\r\n  background: white;\r\n  border-radius: 12px;\r\n  padding: 30px;\r\n  max-width: 450px;\r\n  width: 90%;\r\n  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);\r\n  position: relative;\r\n  cursor: default !important;\r\n}\r\n\r\n.confirm-modal h2 {\r\n  margin-bottom: 20px;\r\n  color: #ff4757;\r\n  font-size: 22px;\r\n  font-weight: 700;\r\n  text-align: center;\r\n}\r\n\r\n.confirm-message {\r\n  font-size: 15px;\r\n  color: #333;\r\n  line-height: 1.6;\r\n  margin-bottom: 25px;\r\n  text-align: center;\r\n}\r\n\r\n.confirm-actions {\r\n  display: flex;\r\n  gap: 12px;\r\n}\r\n\r\n.btn-confirm-cancel,\r\n.btn-confirm-delete {\r\n  flex: 1;\r\n  padding: 12px 20px;\r\n  border: none;\r\n  border-radius: 6px;\r\n  font-size: 15px;\r\n  font-weight: 600;\r\n  cursor: pointer;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.btn-confirm-cancel {\r\n  background: #e0e0e0;\r\n  color: #333;\r\n}\r\n\r\n.btn-confirm-cancel:hover {\r\n  background: #d0d0d0;\r\n}\r\n\r\n.btn-confirm-delete {\r\n  background: #ff4757;\r\n  color: white;\r\n}\r\n\r\n.btn-confirm-delete:hover {\r\n  background: #ff3838;\r\n  box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);\r\n}\r\n\r\n/* Tree Navigator */\r\n.tree-navigator {\r\n  position: fixed;\r\n  left: 20px;\r\n  top: 50%;\r\n  transform: translateY(-50%);\r\n  background: white;\r\n  border-radius: 8px;\r\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\r\n  padding: 10px;\r\n  z-index: 1000;\r\n}\r\n\r\n.navigator-header {\r\n  font-size: 12px;\r\n  font-weight: 600;\r\n  color: #333;\r\n  text-align: center;\r\n  margin-bottom: 8px;\r\n  padding-bottom: 8px;\r\n  border-bottom: 2px solid #e0e0e0;\r\n}\r\n\r\n.tree-navigator canvas {\r\n  display: block;\r\n  border-radius: 4px;\r\n  background: #f5f5f5;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -71026,6 +71055,210 @@ const ProjectManager = ({
 
 /***/ },
 
+/***/ "./src/components/TreeNavigator.jsx"
+/*!******************************************!*\
+  !*** ./src/components/TreeNavigator.jsx ***!
+  \******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const TreeNavigator = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(({
+  projectData,
+  nodePositions,
+  pan,
+  zoom,
+  onNavigate,
+  containerSize
+}, ref) => {
+  const canvasRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  // Expose method to get canvas image
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useImperativeHandle)(ref, () => ({
+    getCanvasImage: () => {
+      if (canvasRef.current) {
+        return canvasRef.current.toDataURL('image/png');
+      }
+      return null;
+    }
+  }));
+
+  // Calculate bounds of the tree
+  const getTreeBounds = () => {
+    const positions = Object.values(nodePositions);
+    if (positions.length === 0) return {
+      minX: 0,
+      maxX: 0,
+      minY: 0,
+      maxY: 0,
+      width: 0,
+      height: 0
+    };
+    const xs = positions.map(p => p.x);
+    const ys = positions.map(p => p.y);
+    const minX = Math.min(...xs) - 100;
+    const maxX = Math.max(...xs) + 100;
+    const minY = Math.min(...ys) - 100;
+    const maxY = Math.max(...ys) + 100;
+    return {
+      minX,
+      maxX,
+      minY,
+      maxY,
+      width: maxX - minX,
+      height: maxY - minY
+    };
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const bounds = getTreeBounds();
+
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Calculate scale to fit tree in minimap
+    const padding = 10;
+    const availableWidth = canvas.width - 2 * padding;
+    const availableHeight = canvas.height - 2 * padding;
+    const scale = Math.min(availableWidth / bounds.width, availableHeight / bounds.height);
+
+    // Center the tree in the minimap
+    const offsetX = padding + (availableWidth - bounds.width * scale) / 2;
+    const offsetY = padding + (availableHeight - bounds.height * scale) / 2;
+
+    // Transform function
+    const transform = (x, y) => ({
+      x: offsetX + (x - bounds.minX) * scale,
+      y: offsetY + (y - bounds.minY) * scale
+    });
+
+    // Draw connections
+    const drawConnections = node => {
+      if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
+        const parentPos = nodePositions[node.ID];
+        if (parentPos) {
+          node.children.forEach(child => {
+            const childPos = nodePositions[child.ID];
+            if (childPos) {
+              const p1 = transform(parentPos.x, parentPos.y);
+              const p2 = transform(childPos.x, childPos.y);
+              ctx.strokeStyle = '#666';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+            drawConnections(child);
+          });
+        }
+      }
+    };
+    if (projectData?.ProjectStructure?.MainQuestion) {
+      drawConnections(projectData.ProjectStructure.MainQuestion);
+    }
+
+    // Draw nodes
+    let nodeNumber = 0;
+    const drawNodes = (node, isMain = false) => {
+      const pos = nodePositions[node.ID];
+      if (pos) {
+        const transformed = transform(pos.x, pos.y);
+        ctx.fillStyle = isMain ? '#667eea' : '#ffffff';
+        ctx.strokeStyle = isMain ? '#ffd700' : '#4a90e2';
+        ctx.lineWidth = isMain ? 2 : 1;
+        const nodeWidth = isMain ? 16 : 12;
+        const nodeHeight = isMain ? 12 : 10;
+
+        // Draw rectangle
+        ctx.fillRect(transformed.x - nodeWidth / 2, transformed.y - nodeHeight / 2, nodeWidth, nodeHeight);
+        ctx.strokeRect(transformed.x - nodeWidth / 2, transformed.y - nodeHeight / 2, nodeWidth, nodeHeight);
+
+        // Draw number for child nodes
+        if (!isMain) {
+          nodeNumber++;
+          ctx.fillStyle = '#333';
+          ctx.font = 'bold 8px Arial';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(nodeNumber.toString(), transformed.x, transformed.y);
+        }
+      }
+      if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
+        node.children.forEach(child => drawNodes(child, false));
+      }
+    };
+    if (projectData?.ProjectStructure?.MainQuestion) {
+      drawNodes(projectData.ProjectStructure.MainQuestion, true);
+    }
+
+    // Draw viewport rectangle
+    if (containerSize) {
+      const viewportWidth = containerSize.width / zoom;
+      const viewportHeight = containerSize.height / zoom;
+      const treeViewportX = -pan.x / zoom;
+      const treeViewportY = -pan.y / zoom;
+      // Shift the box down by half its height and right by half its width
+      const topLeft = transform(treeViewportX - viewportWidth / 2, treeViewportY - viewportHeight / 2);
+      const bottomRight = transform(treeViewportX + viewportWidth / 2, treeViewportY + viewportHeight / 2);
+      const boxWidth = bottomRight.x - topLeft.x;
+      const boxHeight = bottomRight.y - topLeft.y;
+      const adjustedTopLeftX = topLeft.x + boxWidth / 2; // Shift right
+      const adjustedTopLeftY = topLeft.y + boxHeight / 2 - boxHeight * 0.15; // Slightly less down
+      ctx.strokeStyle = '#4a90e2';
+      ctx.lineWidth = 2;
+      ctx.fillStyle = 'rgba(74, 144, 226, 0.1)';
+      ctx.fillRect(adjustedTopLeftX, adjustedTopLeftY, boxWidth, boxHeight);
+      ctx.strokeRect(adjustedTopLeftX, adjustedTopLeftY, boxWidth, boxHeight);
+    }
+  }, [projectData, nodePositions, pan, zoom, containerSize]);
+  const handleClick = e => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+    const bounds = getTreeBounds();
+    const padding = 10;
+    const availableWidth = canvas.width - 2 * padding;
+    const availableHeight = canvas.height - 2 * padding;
+    const scale = Math.min(availableWidth / bounds.width, availableHeight / bounds.height);
+    const offsetX = padding + (availableWidth - bounds.width * scale) / 2;
+    const offsetY = padding + (availableHeight - bounds.height * scale) / 2;
+
+    // Reverse transform
+    const treeX = bounds.minX + (clickX - offsetX) / scale;
+    const treeY = bounds.minY + (clickY - offsetY) / scale;
+    if (onNavigate) {
+      onNavigate(treeX, treeY);
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "tree-navigator"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "navigator-header"
+  }, "Navigator"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("canvas", {
+    ref: canvasRef,
+    width: 200,
+    height: 400,
+    onClick: handleClick,
+    style: {
+      cursor: 'pointer'
+    }
+  }));
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TreeNavigator);
+
+/***/ },
+
 /***/ "./src/components/TreeView.jsx"
 /*!*************************************!*\
   !*** ./src/components/TreeView.jsx ***!
@@ -71044,7 +71277,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EditMainModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditMainModal */ "./src/components/EditMainModal.jsx");
 /* harmony import */ var _EditChildModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditChildModal */ "./src/components/EditChildModal.jsx");
 /* harmony import */ var _ConfirmDeleteModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ConfirmDeleteModal */ "./src/components/ConfirmDeleteModal.jsx");
-/* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.node.min.js");
+/* harmony import */ var _TreeNavigator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TreeNavigator */ "./src/components/TreeNavigator.jsx");
+/* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.node.min.js");
+
 
 
 
@@ -71058,7 +71293,7 @@ const TreeView = ({
   onBackToProjects,
   onSaveProject
 }) => {
-  const [zoom, setZoom] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1);
+  const [zoom, setZoomState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1);
   const [pan, setPan] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     x: 600,
     y: 100
@@ -71075,13 +71310,22 @@ const TreeView = ({
     nodeId: null
   });
   const containerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const navigatorRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const [nodePositions, setNodePositions] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
+  const [containerSize, setContainerSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    width: 0,
+    height: 0
+  });
   const zoomRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(zoom);
+  const panRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(pan);
 
   // Keep zoom ref in sync
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     zoomRef.current = zoom;
   }, [zoom]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    panRef.current = pan;
+  }, [pan]);
 
   // Calculate positions for all visible nodes using layer-based layout
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -71242,6 +71486,49 @@ const TreeView = ({
     };
   }, []); // Remove zoom dependency
 
+  // Helper to set zoom and keep center stable
+  const setZoom = newZoom => {
+    if (!containerRef.current) {
+      setZoomState(newZoom);
+      return;
+    }
+    const rect = containerRef.current.getBoundingClientRect();
+    // Find the current center in tree coordinates
+    const centerX = (rect.width / 2 - panRef.current.x) / zoomRef.current;
+    const centerY = (rect.height / 2 - panRef.current.y) / zoomRef.current;
+    // Calculate new pan to keep center fixed
+    const newPan = {
+      x: rect.width / 2 - centerX * newZoom,
+      y: rect.height / 2 - centerY * newZoom
+    };
+    setPan(newPan);
+    setZoomState(newZoom);
+  };
+
+  // Track container size
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setContainerSize({
+          width: rect.width,
+          height: rect.height
+        });
+      }
+    };
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  const handleNavigate = (treeX, treeY) => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      setPan({
+        x: rect.width / 2 - treeX * zoom,
+        y: rect.height / 2 - treeY * zoom
+      });
+    }
+  };
   const handleMouseDown = e => {
     if (e.button === 0 && !e.target.closest('.node') && !editingNode) {
       setIsDragging(true);
@@ -71371,7 +71658,7 @@ const TreeView = ({
     });
   };
   const printSolutions = async () => {
-    const doc = new jspdf__WEBPACK_IMPORTED_MODULE_6__.jsPDF();
+    const doc = new jspdf__WEBPACK_IMPORTED_MODULE_7__.jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
     const margin = 20;
@@ -71395,86 +71682,195 @@ const TreeView = ({
     doc.text(`Generated: ${currentDate}`, margin, yPosition);
     yPosition += 15;
 
-    // Collect all solutions from the tree
-    const solutions = [];
-    const collectSolutions = (node, level = 0, path = []) => {
-      const currentPath = [...path];
+    // Add navigator tree image
+    if (navigatorRef.current) {
+      const navImage = navigatorRef.current.getCanvasImage();
+      if (navImage) {
+        const imgWidth = 60; // Width in mm
+        const imgHeight = 90; // Height in mm (200x300 aspect ratio)
+        const imgX = (pageWidth - imgWidth) / 2; // Center horizontally
+
+        doc.addImage(navImage, 'PNG', imgX, yPosition, imgWidth, imgHeight);
+        yPosition += imgHeight + 15;
+      }
+    }
+
+    // Build node-to-number mapping (same order as TreeNavigator)
+    const nodeToNumber = {};
+    let nodeCounter = 0;
+    const buildNodeMapping = (node, isMain = false) => {
+      if (!isMain) {
+        nodeCounter++;
+        nodeToNumber[node.ID] = nodeCounter;
+      }
+      if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
+        node.children.forEach(child => buildNodeMapping(child, false));
+      }
+    };
+    if (projectData?.ProjectStructure?.MainQuestion) {
+      buildNodeMapping(projectData.ProjectStructure.MainQuestion, true);
+    }
+
+    // Collect all unique (then, solution) pairs with their numbers
+    const solutionsMap = new Map();
+    const collectSolutions = node => {
       if (node.ID.startsWith('main')) {
         // Main question
-        if (node.QuestionInput) {
-          currentPath.push({
-            type: 'main',
-            belief: node.QuestionInput,
-            solution: node.solution || node.Solution,
-            level: level
+        const solution = node.solution || node.Solution;
+        const then = node.QuestionInput || '';
+        if (solution && !solutionsMap.has(solution + '|' + then)) {
+          solutionsMap.set(solution + '|' + then, {
+            then,
+            solution,
+            number: null,
+            nodeId: node.ID
           });
         }
       } else {
         // Child question
-        if (node.then) {
-          currentPath.push({
-            type: 'child',
-            previousSolution: node.If,
-            belief: node.then,
+        if (node.Solution && !solutionsMap.has(node.Solution + '|' + (node.then || ''))) {
+          solutionsMap.set(node.Solution + '|' + (node.then || ''), {
+            then: node.then || '',
             solution: node.Solution,
-            level: level
+            number: nodeToNumber[node.ID],
+            nodeId: node.ID
           });
         }
       }
       if (node.children && node.children.length > 0) {
         node.children.forEach(child => {
-          collectSolutions(child, level + 1, currentPath);
+          collectSolutions(child);
         });
-      } else {
-        // Leaf node - add this path to solutions
-        if (currentPath.length > 0) {
-          solutions.push(currentPath);
-        }
       }
     };
     if (projectData?.ProjectStructure?.MainQuestion) {
       collectSolutions(projectData.ProjectStructure.MainQuestion);
     }
 
-    // Helper function to add text with word wrap and page break handling
-    const addText = (text, x, y, options = {}) => {
-      const lines = doc.splitTextToSize(text, maxWidth - (options.indent || 0));
-      for (let i = 0; i < lines.length; i++) {
-        if (y + 7 > pageHeight - margin) {
-          doc.addPage();
-          y = margin;
+    // Convert to array and sort by number (nulls first for main node)
+    const solutions = Array.from(solutionsMap.values()).sort((a, b) => {
+      if (a.number === null) return -1;
+      if (b.number === null) return 1;
+      return a.number - b.number;
+    });
+
+    // Helper to check if a node is a leaf (no children)
+    const isLeafNode = nodeId => {
+      // Find the node by ID in the project tree
+      let found = null;
+      const findNode = node => {
+        if (node.ID === nodeId) {
+          found = node;
+          return;
         }
-        doc.text(lines[i], x, y);
-        y += 7;
+        if (node.children && node.children.length > 0) {
+          node.children.forEach(findNode);
+        }
+      };
+      if (projectData?.ProjectStructure?.MainQuestion) {
+        findNode(projectData.ProjectStructure.MainQuestion);
       }
-      return y;
+      return found && (!found.children || found.children.length === 0);
     };
 
-    // Print each solution path
-    solutions.forEach((path, pathIndex) => {
-      // Add path header
-      doc.setFontSize(14);
-      doc.setFont(undefined, 'bold');
-      if (yPosition + 20 > pageHeight - margin) {
+    // Print each unique (then, solution) pair in a two-column box styled as in the reference image
+    solutions.forEach(item => {
+      // Box and layout dimensions
+      const boxPadding = 4;
+      const headerHeight = 8;
+      const numberBoxWidth = 36;
+      const colDividerWidth = 0.5; // Super thin
+      const colHeaderBg = [41, 47, 107]; // #292f6bff
+      const colHeaderTextColor = [255, 255, 255];
+      const numberBoxColor = [180, 180, 180]; // light grey for number box
+      const dividerColor = [200, 200, 200]; // light grey
+      const boxBorderColor = [180, 180, 180]; // main box border grey
+      const solutionHighlightColor = [210, 230, 255]; // light blue
+      const textBoxWidth = (maxWidth - numberBoxWidth - colDividerWidth) / 2;
+      const textFontSize = 9;
+      const headerFontSize = 10;
+      // Prepare text lines
+      doc.setFontSize(textFontSize);
+      const thenLines = doc.splitTextToSize(item.then || '', textBoxWidth - 2 * boxPadding);
+      const solutionLines = doc.splitTextToSize(item.solution || '', textBoxWidth - 2 * boxPadding);
+      const lineSpacing = 4.5; // reduced line spacing
+      const maxLines = Math.max(thenLines.length, solutionLines.length);
+      const textHeight = maxLines * lineSpacing;
+      const contentHeight = textHeight;
+      const boxHeight = headerHeight + contentHeight + 2 * boxPadding;
+
+      // Page break if needed
+      if (yPosition + boxHeight + 5 > pageHeight - margin) {
         doc.addPage();
         yPosition = margin;
       }
-      doc.text(`Solution Path ${pathIndex + 1}`, margin, yPosition);
-      yPosition += 10;
-      doc.setDrawColor(100, 100, 100);
-      doc.line(margin, yPosition, pageWidth - margin, yPosition);
-      yPosition += 8;
 
-      // Print only solutions from each step in the path
-      path.forEach((item, index) => {
-        doc.setFontSize(11);
-        doc.setFont(undefined, 'normal');
-        if (item.solution) {
-          yPosition = addText(item.solution, margin, yPosition);
-          yPosition += 5;
-        }
+      // Draw outer box (sharp corners, grey)
+      doc.setDrawColor(...boxBorderColor);
+      doc.setLineWidth(0.6);
+      doc.rect(margin, yPosition, maxWidth, boxHeight);
+
+      // Draw header background
+      doc.setFillColor(...colHeaderBg);
+      doc.rect(margin + numberBoxWidth, yPosition, maxWidth - numberBoxWidth, headerHeight, 'F');
+
+      // Draw number box (left, light grey)
+      if (item.number !== null) {
+        doc.setFillColor(...numberBoxColor);
+        doc.rect(margin, yPosition, numberBoxWidth, headerHeight, 'F');
+        doc.setTextColor(51, 51, 51);
+        doc.setFont(undefined, 'bold');
+        doc.setFontSize(headerFontSize);
+        doc.text(String(item.number), margin + numberBoxWidth / 2, yPosition + headerHeight / 2 + 1, {
+          align: 'center',
+          baseline: 'middle'
+        });
+      }
+
+      // Draw header text (centered in columns)
+      doc.setTextColor(...colHeaderTextColor);
+      doc.setFont(undefined, 'bold');
+      doc.setFontSize(headerFontSize);
+      const leftHeader = 'Negative Belief';
+      const rightHeader = 'Solution';
+      doc.text(leftHeader, margin + numberBoxWidth + textBoxWidth / 2, yPosition + headerHeight / 2 + 1, {
+        align: 'center',
+        baseline: 'middle'
       });
-      yPosition += 10; // Space between paths
+      doc.text(rightHeader, margin + numberBoxWidth + textBoxWidth + colDividerWidth + textBoxWidth / 2, yPosition + headerHeight / 2 + 1, {
+        align: 'center',
+        baseline: 'middle'
+      });
+
+      // Draw vertical divider (thin, light grey, not full height)
+      doc.setDrawColor(...dividerColor);
+      const dividerX = margin + numberBoxWidth + textBoxWidth + colDividerWidth / 2;
+      doc.setLineWidth(colDividerWidth);
+      // Only from just below header to just above bottom
+      doc.line(dividerX, yPosition + headerHeight + 4, dividerX, yPosition + boxHeight - 4);
+
+      // Highlight solution column if this is a leaf child
+      if (item.number !== null && isLeafNode(item.nodeId)) {
+        doc.setFillColor(...solutionHighlightColor);
+        doc.rect(margin + numberBoxWidth + colDividerWidth + textBoxWidth, yPosition + headerHeight, textBoxWidth, boxHeight - headerHeight, 'F');
+      }
+
+      // Draw then and solution columns
+      doc.setFont(undefined, 'normal');
+      doc.setFontSize(textFontSize);
+      doc.setTextColor(0, 0, 0);
+      let leftX = margin + numberBoxWidth + boxPadding;
+      let rightX = margin + numberBoxWidth + colDividerWidth + textBoxWidth + boxPadding;
+      let textY = yPosition + headerHeight + boxPadding + 2;
+      // Left column: then
+      thenLines.forEach((line, idx) => {
+        doc.text(line, leftX, textY + idx * lineSpacing);
+      });
+      // Right column: solution
+      solutionLines.forEach((line, idx) => {
+        doc.text(line, rightX, textY + idx * lineSpacing);
+      });
+      yPosition += boxHeight;
     });
 
     // Generate PDF as blob
@@ -71828,6 +72224,14 @@ const TreeView = ({
     onConfirm: confirmDelete,
     onCancel: cancelDelete,
     message: "Are you sure you want to delete this question? This will also delete all of its child questions. This action cannot be undone."
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TreeNavigator__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    ref: navigatorRef,
+    projectData: projectData,
+    nodePositions: nodePositions,
+    pan: pan,
+    zoom: zoom,
+    onNavigate: handleNavigate,
+    containerSize: containerSize
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "top-controls"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {

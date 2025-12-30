@@ -4,10 +4,11 @@ import ChildQuestion from './ChildQuestion';
 import EditMainModal from './EditMainModal';
 import EditChildModal from './EditChildModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
+import TreeNavigator from './TreeNavigator';
 import { jsPDF } from 'jspdf';
 
 const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProject }) => {
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoomState] = useState(1);
   const [pan, setPan] = useState({ x: 600, y: 100 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -15,13 +16,19 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
   const [selectedNode, setSelectedNode] = useState(null);
   const [deleteConfirm, setDeleteConfirm] = useState({ isOpen: false, nodeId: null });
   const containerRef = useRef(null);
+  const navigatorRef = useRef(null);
   const [nodePositions, setNodePositions] = useState({});
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const zoomRef = useRef(zoom);
+  const panRef = useRef(pan);
 
   // Keep zoom ref in sync
   useEffect(() => {
     zoomRef.current = zoom;
   }, [zoom]);
+  useEffect(() => {
+    panRef.current = pan;
+  }, [pan]);
 
   // Calculate positions for all visible nodes using layer-based layout
   useEffect(() => {
@@ -191,6 +198,49 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
     };
   }, []); // Remove zoom dependency
 
+  // Helper to set zoom and keep center stable
+  const setZoom = (newZoom) => {
+    if (!containerRef.current) {
+      setZoomState(newZoom);
+      return;
+    }
+    const rect = containerRef.current.getBoundingClientRect();
+    // Find the current center in tree coordinates
+    const centerX = (rect.width / 2 - panRef.current.x) / zoomRef.current;
+    const centerY = (rect.height / 2 - panRef.current.y) / zoomRef.current;
+    // Calculate new pan to keep center fixed
+    const newPan = {
+      x: rect.width / 2 - centerX * newZoom,
+      y: rect.height / 2 - centerY * newZoom
+    };
+    setPan(newPan);
+    setZoomState(newZoom);
+  };
+
+  // Track container size
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setContainerSize({ width: rect.width, height: rect.height });
+      }
+    };
+    
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  const handleNavigate = (treeX, treeY) => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      setPan({
+        x: rect.width / 2 - treeX * zoom,
+        y: rect.height / 2 - treeY * zoom
+      });
+    }
+  };
+
   const handleMouseDown = (e) => {
     if (e.button === 0 && !e.target.closest('.node') && !editingNode) {
       setIsDragging(true);
@@ -345,19 +395,57 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
     doc.text(`Generated: ${currentDate}`, margin, yPosition);
     yPosition += 15;
 
-    // Collect all unique solutions from the tree
-    const solutionsSet = new Set();
+    // Add navigator tree image
+    if (navigatorRef.current) {
+      const navImage = navigatorRef.current.getCanvasImage();
+      if (navImage) {
+        const imgWidth = 60; // Width in mm
+        const imgHeight = 90; // Height in mm (200x300 aspect ratio)
+        const imgX = (pageWidth - imgWidth) / 2; // Center horizontally
+        
+        doc.addImage(navImage, 'PNG', imgX, yPosition, imgWidth, imgHeight);
+        yPosition += imgHeight + 15;
+      }
+    }
+
+    // Build node-to-number mapping (same order as TreeNavigator)
+    const nodeToNumber = {};
+    let nodeCounter = 0;
+    const buildNodeMapping = (node, isMain = false) => {
+      if (!isMain) {
+        nodeCounter++;
+        nodeToNumber[node.ID] = nodeCounter;
+      }
+      
+      if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
+        node.children.forEach(child => buildNodeMapping(child, false));
+      }
+    };
+
+    if (projectData?.ProjectStructure?.MainQuestion) {
+      buildNodeMapping(projectData.ProjectStructure.MainQuestion, true);
+    }
+
+
+    // Collect all unique (then, solution) pairs with their numbers
+    const solutionsMap = new Map();
     const collectSolutions = (node) => {
       if (node.ID.startsWith('main')) {
         // Main question
         const solution = node.solution || node.Solution;
-        if (solution) {
-          solutionsSet.add(solution);
+        const then = node.QuestionInput || '';
+        if (solution && !solutionsMap.has(solution + '|' + then)) {
+          solutionsMap.set(solution + '|' + then, { then, solution, number: null, nodeId: node.ID });
         }
       } else {
         // Child question
-        if (node.Solution) {
-          solutionsSet.add(node.Solution);
+        if (node.Solution && !solutionsMap.has(node.Solution + '|' + (node.then || ''))) {
+          solutionsMap.set(node.Solution + '|' + (node.then || ''), {
+            then: node.then || '',
+            solution: node.Solution,
+            number: nodeToNumber[node.ID],
+            nodeId: node.ID
+          });
         }
       }
 
@@ -372,36 +460,128 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
       collectSolutions(projectData.ProjectStructure.MainQuestion);
     }
 
-    // Convert to array
-    const solutions = Array.from(solutionsSet);
+    // Convert to array and sort by number (nulls first for main node)
+    const solutions = Array.from(solutionsMap.values()).sort((a, b) => {
+      if (a.number === null) return -1;
+      if (b.number === null) return 1;
+      return a.number - b.number;
+    });
 
-    // Helper function to add text with word wrap and page break handling
-    const addText = (text, x, y, options = {}) => {
-      const lines = doc.splitTextToSize(text, maxWidth - (options.indent || 0));
-      
-      for (let i = 0; i < lines.length; i++) {
-        if (y + 7 > pageHeight - margin) {
-          doc.addPage();
-          y = margin;
+    // Helper to check if a node is a leaf (no children)
+    const isLeafNode = (nodeId) => {
+      // Find the node by ID in the project tree
+      let found = null;
+      const findNode = (node) => {
+        if (node.ID === nodeId) {
+          found = node;
+          return;
         }
-        doc.text(lines[i], x, y);
-        y += 7;
+        if (node.children && node.children.length > 0) {
+          node.children.forEach(findNode);
+        }
+      };
+      if (projectData?.ProjectStructure?.MainQuestion) {
+        findNode(projectData.ProjectStructure.MainQuestion);
       }
-      return y;
+      return found && (!found.children || found.children.length === 0);
     };
 
-    // Print each unique solution
-    doc.setFontSize(11);
-    doc.setFont(undefined, 'normal');
-    
-    solutions.forEach((solution, index) => {
-      if (yPosition + 15 > pageHeight - margin) {
+    // Print each unique (then, solution) pair in a two-column box styled as in the reference image
+    solutions.forEach((item) => {
+      // Box and layout dimensions
+      const boxPadding = 4;
+      const headerHeight = 8;
+      const numberBoxWidth = 36;
+      const colDividerWidth = 0.5; // Super thin
+      const colHeaderBg = [41, 47, 107]; // #292f6bff
+      const colHeaderTextColor = [255, 255, 255];
+      const numberBoxColor = [180, 180, 180]; // light grey for number box
+      const dividerColor = [200, 200, 200]; // light grey
+      const boxBorderColor = [180, 180, 180]; // main box border grey
+      const solutionHighlightColor = [210, 230, 255]; // light blue
+      const textBoxWidth = (maxWidth - numberBoxWidth - colDividerWidth) / 2;
+      const textFontSize = 9;
+      const headerFontSize = 10;
+      // Prepare text lines
+      doc.setFontSize(textFontSize);
+      const thenLines = doc.splitTextToSize(item.then || '', textBoxWidth - 2 * boxPadding);
+      const solutionLines = doc.splitTextToSize(item.solution || '', textBoxWidth - 2 * boxPadding);
+      const lineSpacing = 4.5; // reduced line spacing
+      const maxLines = Math.max(thenLines.length, solutionLines.length);
+      const textHeight = maxLines * lineSpacing;
+      const contentHeight = textHeight;
+      const boxHeight = headerHeight + contentHeight + 2 * boxPadding;
+
+      // Page break if needed
+      if (yPosition + boxHeight + 5 > pageHeight - margin) {
         doc.addPage();
         yPosition = margin;
       }
-      
-      yPosition = addText(solution, margin, yPosition);
-      yPosition += 8;
+
+      // Draw outer box (sharp corners, grey)
+      doc.setDrawColor(...boxBorderColor);
+      doc.setLineWidth(0.6);
+      doc.rect(margin, yPosition, maxWidth, boxHeight);
+
+      // Draw header background
+      doc.setFillColor(...colHeaderBg);
+      doc.rect(margin + numberBoxWidth, yPosition, maxWidth - numberBoxWidth, headerHeight, 'F');
+
+      // Draw number box (left, light grey)
+      if (item.number !== null) {
+        doc.setFillColor(...numberBoxColor);
+        doc.rect(margin, yPosition, numberBoxWidth, headerHeight, 'F');
+        doc.setTextColor(51, 51, 51);
+        doc.setFont(undefined, 'bold');
+        doc.setFontSize(headerFontSize);
+        doc.text(String(item.number), margin + numberBoxWidth / 2, yPosition + headerHeight / 2 + 1, { align: 'center', baseline: 'middle' });
+      }
+
+      // Draw header text (centered in columns)
+      doc.setTextColor(...colHeaderTextColor);
+      doc.setFont(undefined, 'bold');
+      doc.setFontSize(headerFontSize);
+      const leftHeader = 'Negative Belief';
+      const rightHeader = 'Solution';
+      doc.text(leftHeader, margin + numberBoxWidth + textBoxWidth / 2, yPosition + headerHeight / 2 + 1, { align: 'center', baseline: 'middle' });
+      doc.text(rightHeader, margin + numberBoxWidth + textBoxWidth + colDividerWidth + textBoxWidth / 2, yPosition + headerHeight / 2 + 1, { align: 'center', baseline: 'middle' });
+
+      // Draw vertical divider (thin, light grey, not full height)
+      doc.setDrawColor(...dividerColor);
+      const dividerX = margin + numberBoxWidth + textBoxWidth + colDividerWidth / 2;
+      doc.setLineWidth(colDividerWidth);
+      // Only from just below header to just above bottom
+      doc.line(dividerX, yPosition + headerHeight + 4, dividerX, yPosition + boxHeight - 4);
+
+      // Highlight solution column if this is a leaf child
+      if (item.number !== null && isLeafNode(item.nodeId)) {
+        doc.setFillColor(...solutionHighlightColor);
+        doc.rect(
+          margin + numberBoxWidth + colDividerWidth + textBoxWidth,
+          yPosition + headerHeight,
+          textBoxWidth,
+          boxHeight - headerHeight,
+          'F'
+        );
+      }
+
+      // Draw then and solution columns
+      doc.setFont(undefined, 'normal');
+      doc.setFontSize(textFontSize);
+      doc.setTextColor(0, 0, 0);
+      let leftX = margin + numberBoxWidth + boxPadding;
+      let rightX = margin + numberBoxWidth + colDividerWidth + textBoxWidth + boxPadding;
+      let textY = yPosition + headerHeight + boxPadding + 2;
+      // Left column: then
+      thenLines.forEach((line, idx) => {
+        doc.text(line, leftX, textY + idx * lineSpacing);
+      });
+      // Right column: solution
+      solutionLines.forEach((line, idx) => {
+        doc.text(line, rightX, textY + idx * lineSpacing);
+      });
+
+      yPosition += boxHeight;
     });
 
     // Generate PDF as blob
@@ -815,6 +995,16 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         onConfirm={confirmDelete}
         onCancel={cancelDelete}
         message="Are you sure you want to delete this question? This will also delete all of its child questions. This action cannot be undone."
+      />
+
+      <TreeNavigator
+        ref={navigatorRef}
+        projectData={projectData}
+        nodePositions={nodePositions}
+        pan={pan}
+        zoom={zoom}
+        onNavigate={handleNavigate}
+        containerSize={containerSize}
       />
 
       <div className="top-controls">
