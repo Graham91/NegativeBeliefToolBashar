@@ -25,9 +25,11 @@ const getProjectFilePath = (projectId) => {
 
 const createWindow = () => {
   // Create the browser window.
+
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -41,8 +43,8 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  // Create menu
-  createMenu();
+  // Remove the menu bar completely
+  mainWindow.setMenuBarVisibility(false);
 };
 
 const createMenu = () => {

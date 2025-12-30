@@ -1,3 +1,116 @@
+/* SolutionPreview styles moved from inline */
+.solution-preview {
+  padding: 0;
+  background: #f7f8fa;
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+}
+.solution-preview-title {
+  text-align: center;
+  color: #292f6b;
+  margin-bottom: 12px;
+}
+.solution-preview-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.solution-preview-empty {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 24px;
+}
+.solution-preview-box {
+  border: 1.5px solid #b4b4b4;
+  border-radius: 0;
+  background: #fff;
+  margin-bottom: 0;
+  box-shadow: 0 2px 8px rgba(41,47,107,0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+.solution-preview-header-row {
+  display: flex;
+  align-items: stretch;
+  min-height: 36px;
+}
+.solution-preview-number {
+  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
+  background: #e0e0e0;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  border-right: 1.5px solid #b4b4b4;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+.solution-preview-number-empty {
+  background: transparent;
+}
+.solution-preview-columns {
+  flex: 1;
+  display: flex;
+  background: #292f6b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  align-items: center;
+  border-top-right-radius: 0;
+  border-bottom: 1.5px solid #b4b4b4;
+}
+.solution-preview-col {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  padding: 6px 8px;
+  box-sizing: border-box;
+}
+.solution-preview-col-left {
+  border-right: 1px solid #b4b4b4;
+}
+.solution-preview-content-row {
+  display: flex;
+  align-items: stretch;
+  min-height: 60px;
+}
+.solution-preview-content {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 8px 8px;
+  font-size: 15px;
+  color: #222;
+  word-break: break-word;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.solution-preview-content-left {
+  border-right: 1px solid #e0e0e0;
+  background: #fff;
+}
+.solution-preview-content-right {
+  background: #f8faff;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-weight: 400;
+}
+.solution-preview-leaf {
+  background: linear-gradient(90deg, #d2e6ff 0%, #eaf4ff 100%);
+  font-weight: 600;
+}
+.solution-preview-none {
+  color: #bbb;
+  font-style: italic;
+}
 /* Tab system styles */
 .tab-bar {
   display: flex;
@@ -813,7 +926,7 @@ body {
 /* Back to Projects Button */
 .top-controls {
   position: fixed;
-  top: 20px;
+  top: 60px;
   left: 20px;
   z-index: 1000;
   display: flex;
