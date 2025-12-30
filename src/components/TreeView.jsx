@@ -7,7 +7,7 @@ import ConfirmDeleteModal from './ConfirmDeleteModal';
 import TreeNavigator from './TreeNavigator';
 import { jsPDF } from 'jspdf';
 
-const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProject }) => {
+const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProject, revisitMap, setRevisitMap }) => {
   const [zoom, setZoomState] = useState(1);
   const [pan, setPan] = useState({ x: 600, y: 100 });
   const [isDragging, setIsDragging] = useState(false);
@@ -904,6 +904,14 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
   const renderNode = (node, isMain = false) => {
     const pos = nodePositions[node.ID];
 
+    // Determine if this child should glow for revisit
+    let glowRevisit = false;
+    if (!isMain && revisitMap[node.ID]) {
+      // Glow if revisit is on and no new child has been added
+      const hasChildren = node.children && node.children.length > 0;
+      glowRevisit = !hasChildren;
+    }
+
     if (isMain) {
       return (
         <MainQuestion
@@ -926,6 +934,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
           onClick={handleNodeClick}
           onDoubleClick={handleNodeDoubleClick}
           onDelete={deleteChild}
+          glowRevisit={glowRevisit}
         />
       );
     }

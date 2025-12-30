@@ -1,18 +1,20 @@
 import React from 'react';
 
-const ChildQuestion = ({ node, position, onAddChild, onToggleChildren, onDoubleClick, onDelete, onClick }) => {
+const ChildQuestion = ({ node, position, onAddChild, onToggleChildren, onDoubleClick, onDelete, onClick, glowRevisit }) => {
   if (!position) return null;
 
   const isInactive = node.showChildren === 'false';
 
   return (
     <div
-      className={`node child-node ${isInactive ? 'inactive' : ''}`}
+      className={`node child-node${isInactive ? ' inactive' : ''}${glowRevisit ? ' glow-revisit' : ''}`}
       style={{
         position: 'absolute',
         left: `${position.x}px`,
         top: `${position.y}px`,
         transform: 'translate(-50%, 0)',
+        boxShadow: glowRevisit ? '0 0 16px 4px rgba(255,0,0,0.5)' : undefined,
+        borderColor: glowRevisit ? '#ff2222' : undefined,
       }}
       onClick={() => onClick(node)}
       onDoubleClick={() => onDoubleClick(node)}

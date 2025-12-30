@@ -1,5 +1,5 @@
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import SolutionPreviewBox from './SolutionPreviewBox';
 import SolutionPreviewHeaderRow from './SolutionPreviewHeaderRow';
 import SolutionPreviewContentRow from './SolutionPreviewContentRow';
@@ -17,7 +17,7 @@ function findNodeById(node, id) {
   return null;
 }
 
-const SolutionPreview = ({ projectData }) => {
+const SolutionPreview = ({ projectData, revisitMap, setRevisitMap }) => {
   // Build node-to-number mapping (same as PDF export)
   const { solutions, isLeafNode } = useMemo(() => {
     const nodeToNumber = {};
@@ -102,10 +102,19 @@ const SolutionPreview = ({ projectData }) => {
         )}
         {solutions.map((item, idx) => {
           const isLeaf = item.number !== null && isLeafNode(item.nodeId);
+          const revisitOn = !!revisitMap[item.nodeId];
           return (
             <SolutionPreviewBox key={item.nodeId + '|' + idx}>
               <SolutionPreviewHeaderRow number={item.number} />
-              <SolutionPreviewContentRow thenText={item.then} solutionText={item.solution} isLeaf={isLeaf} />
+              <SolutionPreviewContentRow
+                thenText={item.then}
+                solutionText={item.solution}
+                isLeaf={isLeaf}
+                revisitOn={revisitOn}
+                onToggleRevisit={() => {
+                  setRevisitMap(prev => ({ ...prev, [item.nodeId]: !prev[item.nodeId] }));
+                }}
+              />
             </SolutionPreviewBox>
           );
         })}

@@ -21,6 +21,9 @@ const App = () => {
     }
   });
 
+  // Global revisit state for solution toggles
+  const [revisitMap, setRevisitMap] = useState({});
+
   const projectDataRef = useRef(projectData);
 
   // Keep ref in sync with state
@@ -140,9 +143,15 @@ const App = () => {
               updateProjectData={updateProjectData}
               onBackToProjects={handleBackToProjects}
               onSaveProject={handleSaveProject}
+              revisitMap={revisitMap}
+              setRevisitMap={setRevisitMap}
             />
           ) : (
-            <SolutionPreview projectData={projectData} />
+            <SolutionPreview
+              projectData={projectData}
+              revisitMap={revisitMap}
+              setRevisitMap={setRevisitMap}
+            />
           )}
 
         </>
