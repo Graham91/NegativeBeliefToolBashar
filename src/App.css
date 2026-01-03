@@ -1083,6 +1083,32 @@ body {
   border-bottom: 2px solid #e0e0e0;
 }
 
+.navigator-canvas-container {
+  max-height: 500px;
+  max-width: 200px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+.navigator-canvas-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.navigator-canvas-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.navigator-canvas-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.navigator-canvas-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .tree-navigator canvas {
   display: block;
   border-radius: 4px;

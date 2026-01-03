@@ -11,6 +11,7 @@ const App = () => {
   const [projectData, setProjectData] = useState({
     projectName: 'New Project',
     LastSaveTime: null,
+    RevisitNodes: [], // Array of node IDs marked for revisit
     ProjectStructure: {
       MainQuestion: {
         QuestionInput: '',
@@ -23,6 +24,14 @@ const App = () => {
 
   // Global revisit state for solution toggles
   const [revisitMap, setRevisitMap] = useState({});
+
+  // Reference for revisitMap to use in event listeners
+  const revisitMapRef = useRef(revisitMap);
+  
+  // Keep ref in sync with state
+  useEffect(() => {
+    revisitMapRef.current = revisitMap;
+  }, [revisitMap]);
 
   const projectDataRef = useRef(projectData);
 
@@ -39,8 +48,21 @@ const App = () => {
 
     // Listen for project loaded
     const handleProjectLoaded = (event, data) => {
-      setProjectData(data.projectData);
+      const loadedData = data.projectData;
+      // Ensure backward compatibility - add RevisitNodes if it doesn't exist
+      if (!loadedData.RevisitNodes) {
+        loadedData.RevisitNodes = [];
+      }
+      setProjectData(loadedData);
       setCurrentProjectId(data.projectId);
+      
+      // Convert RevisitNodes array to revisitMap object
+      const newRevisitMap = {};
+      (loadedData.RevisitNodes || []).forEach(nodeId => {
+        newRevisitMap[nodeId] = true;
+      });
+      setRevisitMap(newRevisitMap);
+      
       setCurrentView('tree');
       setActiveTab('tree');
     };
@@ -48,7 +70,13 @@ const App = () => {
     // Listen for save requests
     const handleRequestSaveData = () => {
       if (currentProjectId) {
-        window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+        // Convert revisitMap to array of node IDs before saving
+        const revisitNodes = Object.keys(revisitMapRef.current).filter(nodeId => revisitMapRef.current[nodeId]);
+        const dataToSave = {
+          ...projectDataRef.current,
+          RevisitNodes: revisitNodes
+        };
+        window.electronAPI.saveProjectData(currentProjectId, dataToSave);
       }
     };
 
@@ -76,7 +104,13 @@ const App = () => {
   useEffect(() => {
     if (currentView === 'tree' && currentProjectId) {
       const autoSaveInterval = setInterval(() => {
-        window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+        // Convert revisitMap to array of node IDs before saving
+        const revisitNodes = Object.keys(revisitMapRef.current).filter(nodeId => revisitMapRef.current[nodeId]);
+        const dataToSave = {
+          ...projectDataRef.current,
+          RevisitNodes: revisitNodes
+        };
+        window.electronAPI.saveProjectData(currentProjectId, dataToSave);
         console.log('Auto-saved project');
       }, 60000); // 60 seconds
 
@@ -95,20 +129,33 @@ const App = () => {
 
   const handleSaveProject = useCallback(() => {
     if (currentProjectId) {
-      window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+      // Convert revisitMap to array of node IDs before saving
+      const revisitNodes = Object.keys(revisitMap).filter(nodeId => revisitMap[nodeId]);
+      const dataToSave = {
+        ...projectDataRef.current,
+        RevisitNodes: revisitNodes
+      };
+      window.electronAPI.saveProjectData(currentProjectId, dataToSave);
       console.log('Project saved manually');
     }
-  }, [currentProjectId]);
+  }, [currentProjectId, revisitMap]);
 
   const handleBackToProjects = useCallback(() => {
     // Auto-save current project before going back
     if (currentProjectId) {
-      window.electronAPI.saveProjectData(currentProjectId, projectDataRef.current);
+      // Convert revisitMap to array of node IDs before saving
+      const revisitNodes = Object.keys(revisitMap).filter(nodeId => revisitMap[nodeId]);
+      const dataToSave = {
+        ...projectDataRef.current,
+        RevisitNodes: revisitNodes
+      };
+      window.electronAPI.saveProjectData(currentProjectId, dataToSave);
     }
     setCurrentView('projects');
     setCurrentProjectId(null);
     setActiveTab('tree'); // Ensure tab resets to TreeView
-  }, [currentProjectId]);
+    setRevisitMap({}); // Clear revisit map when leaving project
+  }, [currentProjectId, revisitMap]);
 
   return (
     <div className="app">

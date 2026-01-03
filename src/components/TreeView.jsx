@@ -308,6 +308,15 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         MainQuestion: updatedMainQuestion
       }
     });
+    
+    // Clear revisit flag when a child is added to the parent
+    if (revisitMap[parentId]) {
+      setRevisitMap(prev => {
+        const updated = { ...prev };
+        delete updated[parentId];
+        return updated;
+      });
+    }
   };
 
   const toggleChildren = (nodeId) => {
@@ -907,9 +916,8 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
     // Determine if this child should glow for revisit
     let glowRevisit = false;
     if (!isMain && revisitMap[node.ID]) {
-      // Glow if revisit is on and no new child has been added
-      const hasChildren = node.children && node.children.length > 0;
-      glowRevisit = !hasChildren;
+      // Glow if marked as revisit - will be cleared when a new child is added
+      glowRevisit = true;
     }
 
     if (isMain) {
@@ -1015,6 +1023,7 @@ const TreeView = ({ projectData, updateProjectData, onBackToProjects, onSaveProj
         zoom={zoom}
         onNavigate={handleNavigate}
         containerSize={containerSize}
+        revisitMap={revisitMap}
       />
 
       <div className="top-controls">

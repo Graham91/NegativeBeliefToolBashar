@@ -22,12 +22,14 @@ const SolutionPreview = ({ projectData, revisitMap, setRevisitMap }) => {
   const { solutions, isLeafNode } = useMemo(() => {
     const nodeToNumber = {};
     let nodeCounter = 0;
+    // Build mapping for ALL nodes, regardless of visibility
     const buildNodeMapping = (node, isMain = false) => {
       if (!isMain) {
         nodeCounter++;
         nodeToNumber[node.ID] = nodeCounter;
       }
-      if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
+      // Visit ALL children to assign consistent numbers
+      if (node.children && node.children.length > 0) {
         node.children.forEach(child => buildNodeMapping(child, false));
       }
     };
@@ -56,7 +58,8 @@ const SolutionPreview = ({ projectData, revisitMap, setRevisitMap }) => {
           });
         }
       }
-      if (node.children && node.children.length > 0) {
+      // Only collect solutions from visible children
+      if (node.children && node.children.length > 0 && node.showChildren !== 'false') {
         node.children.forEach(child => {
           collectSolutions(child);
         });
