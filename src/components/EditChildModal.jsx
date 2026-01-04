@@ -13,7 +13,7 @@ const EditChildModal = ({ editingNode, closeEditModal, updateNode }) => {
 
                 <div className="form-group">
                     <p>
-                        If{' "'}
+                        If I believe,{' "'}
                         <span
                             className="inline-input"
                             role="textbox"
